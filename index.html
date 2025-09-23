@@ -1,60 +1,318 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>李雅郁的個人網站</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body { font-family: 'Microsoft JhengHei', sans-serif; }
-    header { background: #4a90e2; color: white; padding: 2rem 0; text-align: center; }
-    .profile-pic { width: 200px; height: 200px; object-fit: cover; border-radius: 50%; margin-bottom: 1rem; }
-    section { padding: 3rem 0; }
-    footer { background: #333; color: #eee; text-align: center; padding: 1rem 0; margin-top: 2rem; }
-    h2 { margin-bottom: 1.5rem; }
-    .experience-photo { max-width: 100%; border-radius: 10px; margin-top: 0.5rem; }
-  </style>
+    <meta charset="utf-8">
+    <title>李雅郁的個人網站</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Space+Grotesk&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
 </head>
+
 <body>
-  <header>
-    <h1>李雅郁的個人網站</h1>
-    <p>國立臺灣師範大學｜科技應用與人力資源發展學系</p>
-  </header>
+    <!-- Spinner Start -->
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
 
-  <main class="container">
-    <!-- 自我介紹 -->
-    <section id="about">
-      <h2>自我介紹</h2>
-      <img src="img/me.jpg" alt="李雅郁" class="profile-pic">
-      <p>
-        我是李雅郁，目前就讀國立臺灣師範大學科技應用與人力資源發展學系。<br>
-        我對教育科技與活動企劃特別有興趣，喜歡把創意融入實際執行。<br>
-        個性樂觀細心，重視團隊合作，也樂於挑戰新事物。<br>
-        希望未來能夠結合科技與教育，設計出更多具啟發性的學習工具。
-      </p>
-      <ul>
-        <li><b>電話：</b> 0905-493-518</li>
-        <li><b>Email：</b> winnielee950415@gmail.com</li>
-      </ul>
-    </section>
 
-    <!-- 經歷 -->
-    <section id="experience">
-      <h2>經歷</h2>
-      <h5>大一</h5>
-      <p>科技營活動股</p>
-      <img src="img/exp-freshman.jpg" alt="大一活動照" class="experience-photo">
-      <h5 class="mt-4">大二</h5>
-      <p>系學會 總務部</p>
-      <img src="img/exp-sophomore1.jpg" alt="大二總務部" class="experience-photo">
-      <p class="mt-3">宿營 器設股</p>
-      <img src="img/exp-sophomore2.jpg" alt="大二宿營" class="experience-photo">
-    </section>
-  </main>
+    <!-- Navbar Start -->
+    <div class="container-fluid sticky-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light border-bottom border-2 border-white">
+                <a href="#home" class="navbar-brand">
+                    <h1>李雅郁</h1>
+                </a>
+                <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse"
+                    data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto">
+                        <a href="#home" class="nav-item nav-link active">Home</a>
+                        <a href="#about" class="nav-item nav-link">About</a>
+                        <a href="#portfolio" class="nav-item nav-link">Portfolio</a>
+                        <a href="#experience" class="nav-item nav-link">Experience</a>
+                        <a href="#contact" class="nav-item nav-link">Contact</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
 
-  <footer>
-    <p>© 2025 李雅郁 | 個人網站</p>
-  </footer>
 
+    <!-- Hero Start -->
+    <div id="home" class="container-fluid pb-5 hero-header bg-light mb-5">
+        <div class="container py-5">
+            <div class="row g-5 align-items-center mb-5">
+                <div class="col-lg-6">
+                    <h1 class="display-1 mb-4 animated slideInRight">李雅郁的 <span class="text-primary">個人網站</span></h1>
+                    <h5 class="d-inline-block border border-2 border-white py-3 px-5 mb-0 animated slideInRight">國立臺灣師範大學｜科技應用與人力資源發展學系</h5>
+                    <div class="mt-4">
+                        <a class="btn btn-primary px-4 me-2" href="#portfolio">作品集</a>
+                        <a class="btn btn-outline-primary px-4" href="#contact">聯絡我</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="img/profile.jpg" alt="profile" class="img-fluid rounded-circle" style="max-width:300px;">
+                </div>
+            </div>
+
+            <div class="row g-5 animated fadeIn">
+                <div class="col-md-6 col-lg-3">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-shrink-0 btn-square border border-2 border-white me-3">
+                            <i class="fa fa-code text-primary"></i>
+                        </div>
+                        <h5 class="lh-base mb-0">Web & Arduino</h5>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-shrink-0 btn-square border border-2 border-white me-3">
+                            <i class="fa fa-chalkboard-teacher text-primary"></i>
+                        </div>
+                        <h5 class="lh-base mb-0">教具設計</h5>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-shrink-0 btn-square border border-2 border-white me-3">
+                            <i class="fa fa-users text-primary"></i>
+                        </div>
+                        <h5 class="lh-base mb-0">活動企劃</h5>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-shrink-0 btn-square border border-2 border-white me-3">
+                            <i class="fa fa-file-alt text-primary"></i>
+                        </div>
+                        <h5 class="lh-base mb-0">Excel / VBA</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero End -->
+
+
+    <!-- About Start -->
+    <div id="about" class="container-fluid py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <img class="img-fluid" src="img/about-1.jpg" alt="about image">
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <h1 class="mb-4"><span class="text-uppercase text-primary bg-light px-2">關於我</span></h1>
+                    <p class="mb-4">我是李雅郁，目前就讀國立臺灣師範大學科技應用與人力資源發展學系。我對教育科技與活動企劃特別有興趣，喜歡把創意融入實際執行。個性樂觀細心，重視團隊合作，也樂於挑戰新事物。希望未來能夠結合科技與教育，設計出更多具啟發性的學習工具。</p>
+
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <h6 class="mb-3"><i class="fa fa-school text-primary me-2"></i>學校</h6>
+                            <p class="mb-0">國立臺灣師範大學</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <h6 class="mb-3"><i class="fa fa-graduation-cap text-primary me-2"></i>系所</h6>
+                            <p class="mb-0">科技應用與人力資源發展學系</p>
+                        </div>
+                        <div class="col-sm-6 mt-3">
+                            <h6 class="mb-3"><i class="fa fa-phone text-primary me-2"></i>電話</h6>
+                            <p class="mb-0">0905-493-518</p>
+                        </div>
+                        <div class="col-sm-6 mt-3">
+                            <h6 class="mb-3"><i class="fa fa-envelope text-primary me-2"></i>Email</h6>
+                            <p class="mb-0"><a href="mailto:winnielee950415@gmail.com">winnielee950415@gmail.com</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+    <!-- Experience Start -->
+    <div id="experience" class="container-fluid py-5">
+        <div class="container">
+            <div class="text-center wow fadeIn" data-wow-delay="0.1s">
+                <h1 class="mb-5">經歷</h1>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="card h-100">
+                        <img src="img/S__64315399_0.jpg" class="card-img-top" alt="大一">
+                        <div class="card-body">
+                            <h5 class="card-title">大一</h5>
+                            <p class="card-text">科技營活動股</p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-md-4 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="card h-100">
+                        <img src="img/S__64315401_0.jpg" class="card-img-top" alt="大一">
+                        <div class="card-body">
+                            <h5 class="card-title">大一</h5>
+                            <p class="card-text">科技之夜公關股</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 wow fadeIn" data-wow-delay="0.3s">
+                    <div class="card h-100">
+                        <img src="img/exp-sophomore1.jpg" class="card-img-top" alt="總務部">
+                        <div class="card-body">
+                            <h5 class="card-title">大二</h5>
+                            <p class="card-text">系學會總務部</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="card h-100">
+                        <img src="img/S__64315403_0.jpg" class="card-img-top" alt="宿營器設股">
+                        <div class="card-body">
+                            <h5 class="card-title">大二</h5>
+                            <p class="card-text">宿營器設股</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Experience End -->
+
+
+    <!-- Portfolio Start (保留簡潔版，可日後擴充) -->
+    <div id="portfolio" class="container-fluid mt-5">
+        <div class="container mt-5">
+            <div class="text-center mb-5">
+                <h2>作品集</h2>
+                <p class="text-muted">（暫無作品顯示 — 可在 img/ 中放入作品縮圖，並在此區塊新增卡片）</p>
+            </div>
+        </div>
+    </div>
+    <!-- Portfolio End -->
+
+
+    <!-- Contact Start -->
+    <div id="contact" class="container-fluid bg-primary newsletter p-0">
+        <div class="container p-0">
+            <div class="row g-0 align-items-center">
+                <div class="col-md-5 ps-lg-0 text-start wow fadeIn" data-wow-delay="0.2s">
+                    <img class="img-fluid w-100" src="img/newsletter.jpg" alt="contact image">
+                </div>
+                <div class="col-md-7 py-5 newsletter-text wow fadeIn" data-wow-delay="0.5s">
+                    <div class="p-5">
+                        <h1 class="mb-4">聯絡我</h1>
+                        <p class="mb-4">有任何合作或問題歡迎透過 email 或電話聯絡我，或在下方填寫簡短訊息。</p>
+                        <form action="#" method="post">
+                            <div class="position-relative w-100 mb-3">
+                                <input class="form-control border-0 w-100 ps-4" type="text" name="name" placeholder="你的名字" style="height:50px;">
+                            </div>
+                            <div class="position-relative w-100 mb-3">
+                                <input class="form-control border-0 w-100 ps-4" type="email" name="email" placeholder="你的 Email" style="height:50px;">
+                            </div>
+                            <div class="position-relative w-100 mb-3">
+                                <textarea class="form-control border-0 w-100 ps-4" name="message" placeholder="留言內容" style="height:120px;"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-dark px-4">送出</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-white-50 footer pt-5">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
+                    <h5 class="text-white">關於我</h5>
+                    <p>我是李雅郁—對教育科技與教具設計感興趣的學生，歡迎聯絡討論專案合作。</p>
+                </div>
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
+                    <h5 class="text-white mb-4">聯絡方式</h5>
+                    <p><i class="fa fa-phone-alt me-3"></i>0905-493-518</p>
+                    <p><i class="fa fa-envelope me-3"></i><a href="mailto:winnielee950415@gmail.com">winnielee950415@gmail.com</a></p>
+                </div>
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
+                    <h5 class="text-white mb-4">快速連結</h5>
+                    <a class="btn btn-link" href="#about">About</a>
+                    <a class="btn btn-link" href="#experience">Experience</a>
+                    <a class="btn btn-link" href="#contact">Contact</a>
+                </div>
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
+                    <h5 class="text-white mb-4">追蹤我</h5>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-primary btn-square border-2 me-2" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-primary btn-square border-2 me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-primary btn-square border-2 me-2" href="#"><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-outline-primary btn-square border-2 me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container wow fadeIn" data-wow-delay="0.1s">
+            <div class="copyright py-3 text-center">
+                &copy; 2025 李雅郁 — All Rights Reserved.
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    <script>
+        window.addEventListener('load', function () {
+            const s = document.getElementById('spinner');
+            if (s) s.classList.remove('show');
+        });
+    </script>
 </body>
+
 </html>
