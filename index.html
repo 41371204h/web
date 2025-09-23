@@ -1,343 +1,60 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
-
 <head>
-    <meta charset="utf-8">
-    <title>李雅郁 — Personal Portfolio</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Portfolio of 李雅郁" name="description">
-
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
-
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Space+Grotesk&display=swap" rel="stylesheet">
-
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
-
-    <!--
-        Usage notes:
-        1. This is a static site. Put this file as index.html in a folder together with /css, /js, /img, /lib folders from the original template.
-        2. Replace img/profile.jpg with your real portrait and update other images in /img.
-        3. To preview locally: double-click index.html (or open it in VS Code and click Live Server).
-        4. To publish on GitHub Pages: push the folder to a GitHub repo and enable Pages on the gh-pages branch or main branch.
-    -->
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>李雅郁的個人網站</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { font-family: 'Microsoft JhengHei', sans-serif; }
+    header { background: #4a90e2; color: white; padding: 2rem 0; text-align: center; }
+    .profile-pic { width: 200px; height: 200px; object-fit: cover; border-radius: 50%; margin-bottom: 1rem; }
+    section { padding: 3rem 0; }
+    footer { background: #333; color: #eee; text-align: center; padding: 1rem 0; margin-top: 2rem; }
+    h2 { margin-bottom: 1.5rem; }
+    .experience-photo { max-width: 100%; border-radius: 10px; margin-top: 0.5rem; }
+  </style>
 </head>
-
 <body>
-    <!-- Spinner (optional) -->
-    <div id="spinner"
-        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
-    </div>
+  <header>
+    <h1>李雅郁的個人網站</h1>
+    <p>國立臺灣師範大學｜科技應用與人力資源發展學系</p>
+  </header>
 
-    <!-- Navbar Start -->
-    <div class="container-fluid sticky-top">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-light border-bottom border-2 border-white">
-                <a href="#home" class="navbar-brand">
-                    <h1>李雅郁</h1>
-                </a>
-                <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse"
-                    data-bs-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto">
-                        <a href="#home" class="nav-item nav-link active">Home</a>
-                        <a href="#about" class="nav-item nav-link">About</a>
-                        <a href="#portfolio" class="nav-item nav-link">Portfolio</a>
-                        <a href="#blog" class="nav-item nav-link">Blog</a>
-                        <a href="#contact" class="nav-item nav-link">Contact</a>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </div>
-    <!-- Navbar End -->
-
-    <!-- Hero / Home Start -->
-    <div id="home" class="container-fluid pb-5 hero-header bg-light mb-5">
-        <div class="container py-5">
-            <div class="row g-5 align-items-center mb-5">
-                <div class="col-lg-6">
-                    <h1 class="display-4 mb-3 animated slideInRight">Hi, I'm <span class="text-primary">李雅郁</span></h1>
-                    <p class="lead mb-4">Student &amp; Designer — I build simple digital things and share projects about design, code and teaching.</p>
-                    <div>
-                        <a class="btn btn-primary px-4 me-2" href="#portfolio">View Portfolio</a>
-                        <a class="btn btn-outline-primary px-4" href="#contact">Hire / Contact</a>
-                    </div>
-                </div>
-                <div class="col-lg-6 text-center">
-                    <!-- profile image: replace img/profile.jpg -->
-                    <img src="img/profile.jpg" class="img-fluid rounded-circle" alt="profile" style="max-width: 320px;">
-                </div>
-            </div>
-
-            <div class="row g-5 animated fadeIn">
-                <div class="col-md-6 col-lg-3">
-                    <div class="d-flex align-items-center">
-                        <div class="flex-shrink-0 btn-square border border-2 border-white me-3">
-                            <i class="fa fa-code text-primary"></i>
-                        </div>
-                        <h5 class="lh-base mb-0">Web Development</h5>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="d-flex align-items-center">
-                        <div class="flex-shrink-0 btn-square border border-2 border-white me-3">
-                            <i class="fa fa-paint-brush text-primary"></i>
-                        </div>
-                        <h5 class="lh-base mb-0">UI / Graphic Design</h5>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="d-flex align-items-center">
-                        <div class="flex-shrink-0 btn-square border border-2 border-white me-3">
-                            <i class="fa fa-chalkboard-teacher text-primary"></i>
-                        </div>
-                        <h5 class="lh-base mb-0">Teaching Materials</h5>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="d-flex align-items-center">
-                        <div class="flex-shrink-0 btn-square border border-2 border-white me-3">
-                            <i class="fa fa-robot text-primary"></i>
-                        </div>
-                        <h5 class="lh-base mb-0">Arduino &amp; Prototyping</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Hero End -->
-
-    <!-- About Start -->
-    <section id="about" class="container-fluid py-5">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-6">
-                    <div class="row">
-                        <div class="col-6 wow fadeIn" data-wow-delay="0.1s">
-                            <img class="img-fluid" src="img/about-1.jpg" alt="">
-                        </div>
-                        <div class="col-6 wow fadeIn" data-wow-delay="0.3s">
-                            <img class="img-fluid h-75" src="img/about-2.jpg" alt="">
-                            <div class="h-25 d-flex align-items-center text-center bg-primary px-4">
-                                <h4 class="text-white lh-base mb-0">Design &amp; Teaching</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                    <h2 class="mb-4"><span class="text-primary">About</span> Me</h2>
-                    <p class="mb-3">你好！我叫李雅郁，目前就讀大學，對設計、程式與教學有濃厚興趣。我的作品包含實作教具、Arduino 小專題與網頁設計。</p>
-                    <p class="mb-4">我會使用 HTML/CSS、基本 JavaScript、Arduino 並熟悉 Excel、VBA。歡迎瀏覽我的作品集或聯絡我討論專案合作。</p>
-
-                    <div class="row g-3">
-                        <div class="col-sm-6">
-                            <h6 class="mb-1"><i class="fa fa-check text-primary me-2"></i>專案經驗</h6>
-                            <p class="mb-0">教具設計、災害模組、互動裝置</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <h6 class="mb-1"><i class="fa fa-check text-primary me-2"></i>技能</h6>
-                            <p class="mb-0">HTML / CSS / Arduino / VBA</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- About End -->
-
-    <!-- Portfolio Start -->
-    <section id="portfolio" class="container-fluid mt-5">
-        <div class="container mt-5">
-            <div class="text-center mb-5">
-                <h2>Portfolio</h2>
-                <p class="text-muted">Selected projects — click to view details (replace links with real pages later)</p>
-            </div>
-
-            <div class="row g-4">
-                <!-- Project cards - replace images and links -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="project-item position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="img/project-1.jpg" alt="Project 1">
-                        <a class="project-overlay text-decoration-none" href="#">
-                            <h4 class="text-white">Teaching Aid — Disaster Routes</h4>
-                            <small class="text-white">Design &amp; Prototype</small>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="project-item position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="img/project-2.jpg" alt="Project 2">
-                        <a class="project-overlay text-decoration-none" href="#">
-                            <h4 class="text-white">Arduino Candy Dispenser</h4>
-                            <small class="text-white">Prototype &amp; Code</small>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="project-item position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="img/project-3.jpg" alt="Project 3">
-                        <a class="project-overlay text-decoration-none" href="#">
-                            <h4 class="text-white">Personal Website</h4>
-                            <small class="text-white">This Template</small>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-    <!-- Portfolio End -->
-
-    <!-- Blog / Notes (optional) -->
-    <section id="blog" class="container-fluid py-5">
-        <div class="container">
-            <div class="text-center mb-4">
-                <h2>Notes &amp; Blog</h2>
-                <p class="text-muted">Short posts about what I'm learning — replace with real content.</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="p-4 border rounded">
-                        <h5>Teaching design ideas</h5>
-                        <p class="mb-0 small">How to make a simple classroom activity using paper and a laser cutter.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="p-4 border rounded">
-                        <h5>Arduino tips</h5>
-                        <p class="mb-0 small">Simple debounce trick for push buttons in Arduino projects.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="p-4 border rounded">
-                        <h5>Project workflow</h5>
-                        <p class="mb-0 small">From idea to prototype: sketch, build, test, document.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <main class="container">
+    <!-- 自我介紹 -->
+    <section id="about">
+      <h2>自我介紹</h2>
+      <img src="img/me.jpg" alt="李雅郁" class="profile-pic">
+      <p>
+        我是李雅郁，目前就讀國立臺灣師範大學科技應用與人力資源發展學系。<br>
+        我對教育科技與活動企劃特別有興趣，喜歡把創意融入實際執行。<br>
+        個性樂觀細心，重視團隊合作，也樂於挑戰新事物。<br>
+        希望未來能夠結合科技與教育，設計出更多具啟發性的學習工具。
+      </p>
+      <ul>
+        <li><b>電話：</b> 0905-493-518</li>
+        <li><b>Email：</b> winnielee950415@gmail.com</li>
+      </ul>
     </section>
 
-    <!-- Contact Start -->
-    <section id="contact" class="container-fluid bg-primary newsletter p-0 mt-5">
-        <div class="container p-0">
-            <div class="row g-0 align-items-center">
-                <div class="col-md-5 ps-lg-0 text-start wow fadeIn" data-wow-delay="0.2s">
-                    <img class="img-fluid w-100" src="img/newsletter.jpg" alt="">
-                </div>
-                <div class="col-md-7 py-5 newsletter-text wow fadeIn" data-wow-delay="0.5s">
-                    <div class="p-5">
-                        <h2 class="mb-3">Contact Me</h2>
-                        <p class="mb-4">想合作或詢問作品，歡迎用下面表單寄信給我。</p>
-                        <form action="#" method="post">
-                            <div class="mb-3">
-                                <input class="form-control border-0 w-100 ps-4" type="text" name="name" placeholder="Your name" style="height:50px;">
-                            </div>
-                            <div class="mb-3">
-                                <input class="form-control border-0 w-100 ps-4" type="email" name="email" placeholder="Your email" style="height:50px;">
-                            </div>
-                            <div class="mb-3">
-                                <textarea class="form-control border-0 w-100 ps-4" name="message" placeholder="Message" style="height:120px;"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-dark px-4">Send Message</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- 經歷 -->
+    <section id="experience">
+      <h2>經歷</h2>
+      <h5>大一</h5>
+      <p>科技營活動股</p>
+      <img src="img/exp-freshman.jpg" alt="大一活動照" class="experience-photo">
+      <h5 class="mt-4">大二</h5>
+      <p>系學會 總務部</p>
+      <img src="img/exp-sophomore1.jpg" alt="大二總務部" class="experience-photo">
+      <p class="mt-3">宿營 器設股</p>
+      <img src="img/exp-sophomore2.jpg" alt="大二宿營" class="experience-photo">
     </section>
-    <!-- Contact End -->
+  </main>
 
-    <!-- Footer Start -->
-    <footer class="container-fluid bg-dark text-white-50 footer pt-5">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-md-6 col-lg-3">
-                    <h3 class="text-white">Connect</h3>
-                    <p>Follow me on social media or reach out via email.</p>
-                    <div class="d-flex pt-2">
-                        <a class="btn btn-outline-primary btn-square border-2 me-2" href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-primary btn-square border-2 me-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-primary btn-square border-2 me-2" href="#"><i class="fab fa-instagram"></i></a>
-                        <a class="btn btn-outline-primary btn-square border-2 me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <h5 class="text-white mb-4">Contact Info</h5>
-                    <p><i class="fa fa-map-marker-alt me-3"></i>Taipei, Taiwan</p>
-                    <p><i class="fa fa-envelope me-3"></i>your-email@example.com</p>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <h5 class="text-white mb-4">Quick Links</h5>
-                    <a class="btn btn-link" href="#about">About</a>
-                    <a class="btn btn-link" href="#portfolio">Portfolio</a>
-                    <a class="btn btn-link" href="#contact">Contact</a>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <h5 class="text-white mb-4">Subscribe</h5>
-                    <p class="small">Get occasional updates about new projects.</p>
-                    <form action="#" method="post">
-                        <div class="position-relative w-100 mb-2">
-                            <input class="form-control border-0 w-100 ps-4 pe-5" type="email" placeholder="Enter Your Email" style="height: 48px;">
-                            <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-1"><i class="fa fa-paper-plane text-primary fs-5"></i></button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+  <footer>
+    <p>© 2025 李雅郁 | 個人網站</p>
+  </footer>
 
-        <div class="container">
-            <div class="copyright py-3 text-center">
-                &copy; " + new Date().getFullYear() + " 李雅郁 — All Rights Reserved.
-            </div>
-        </div>
-    </footer>
-    <!-- Footer End -->
-
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-
-
-    <!-- JavaScript Libraries -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
-
-    <script>
-        // small tweak: hide spinner after load
-        window.addEventListener('load', function () {
-            const s = document.getElementById('spinner');
-            if (s) s.classList.remove('show');
-        });
-    </script>
 </body>
-
 </html>
