@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>李雅郁 • 個人網站</title>
+  <meta name="description" content="李雅郁 的個人網頁：簡介、技能、作品與聯絡方式。">
+
+  <!-- Google Font（可換成本地字體或刪掉） -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --muted: #6b7280;
+      --primary: #0077b6;
+      --accent: #90e0ef;
+      --text: #0f172a;
+      --glass: rgba(255,255,255,0.6);
+      --radius: 12px;
+    }
+    .dark{ --bg:#071021; --card:#071426; --muted:#94a3b8; --primary:#60a5fa; --accent:#38bdf8; --text:#e6eef8; --glass: rgba(255,255,255,0.02);}    
+
+    *{box-sizing:border-box}
+    html,body{height:100%;}
+    body{
+      margin:0; font-family: 'Noto Sans TC', system-ui, -apple-system, 'Microsoft JhengHei', sans-serif;
+      background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      transition: background .25s ease, color .25s ease;
+    }
+
+    /* container */
+    .container{max-width:1100px; margin:0 auto; padding:1.5rem;}
+
+    /* NAV */
+    header.site-header{backdrop-filter: blur(6px); position:sticky; top:0; z-index:60;}
+    .nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:0.6rem 0;}
+    .brand{display:flex;align-items:center;gap:.6rem;font-weight:700}
+    .brand .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--accent));display:inline-flex;align-items:center;justify-content:center;color:white;font-weight:900}
+    nav.main-nav{display:flex;gap:1rem;align-items:center}
+    nav a{color:var(--text);text-decoration:none;padding:.45rem .6rem;border-radius:8px}
+    nav a:hover{background:var(--glass)}
+
+    /* action buttons */
+    .actions{display:flex;gap:.5rem;align-items:center}
+    .btn{display:inline-block;padding:.45rem .75rem;border-radius:10px;border:0;background:var(--primary);color:white;font-weight:600;cursor:pointer}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)}
+
+    /* hamburger */
+    .hamburger{display:none;background:transparent;border:0;font-size:1.2rem}
+
+    /* HERO */
+    .hero{display:grid;grid-template-columns:260px 1fr;gap:1.25rem;align-items:center;padding:2rem 0}
+    .card{background:var(--card);border-radius:var(--radius);padding:1rem;box-shadow:0 6px 18px rgba(2,6,23,0.06)}
+
+    .profile-pic{width:220px;height:220px;border-radius:50%;object-fit:cover;border:6px solid var(--accent);display:block}
+    .name{font-size:1.8rem;font-weight:900;margin:0}
+    .tagline{margin:0.25rem 0 1rem;color:var(--muted)}
+    .cta-row{display:flex;gap:.6rem;flex-wrap:wrap}
+
+    /* SECTION TITLES */
+    h2.section-title{margin:0 0 .75rem 0;color:var(--primary);border-bottom:3px solid rgba(0,0,0,0.03);padding-bottom:.5rem}
+
+    /* SKILLS */
+    .skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem}
+    .skill{padding:.6rem;border-radius:10px}
+    .skill .label{font-weight:600;margin-bottom:.35rem}
+    .progress{height:12px;background:linear-gradient(90deg, rgba(0,0,0,0.06), rgba(0,0,0,0.03));border-radius:10px;overflow:hidden}
+    .progress > span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:inherit;transition:width 900ms cubic-bezier(.2,.9,.2,1)}
+
+    /* PROJECTS */
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem}
+    .project-card{display:flex;flex-direction:column;gap:.6rem;min-height:140px}
+    .project-card img{width:100%;height:140px;object-fit:cover;border-radius:8px}
+
+    /* CONTACT */
+    form.contact-form{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+    form .full{grid-column:1/-1}
+    input,textarea{padding:.6rem;border-radius:8px;border:1px solid rgba(0,0,0,0.08);background:transparent}
+    textarea{min-height:120px;resize:vertical}
+
+    /* FOOTER */
+    footer{padding:1.5rem 0;text-align:center;color:var(--muted);margin-top:2rem}
+
+    /* small screens */
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr; text-align:center}
+      .profile-pic{width:160px;height:160px;margin:0 auto}
+      nav.main-nav{display:none}
+      .hamburger{display:inline-block}
+      form.contact-form{grid-template-columns:1fr}
+      .skills-grid{grid-template-columns:1fr}
+    }
+
+    /* utility */
+    .muted{color:var(--muted)}
+    .hidden{display:none}
+
+    /* transition/fade in */
+    .fade-up{opacity:0;transform:translateY(8px);transition:all .6s cubic-bezier(.2,.9,.2,1)}
+    .fade-up.in{opacity:1;transform:translateY(0)}
+
+    /* simple modal */
+    .modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.45);z-index:80;}
+    .modal .panel{width:min(720px,95%);max-height:90vh;overflow:auto}
+
+    /* small accessibility focus */
+    a:focus, button:focus, input:focus, textarea:focus{outline:3px solid rgba(99,102,241,0.18);outline-offset:2px}
+
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav-wrap">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">Y</div>
+      <div>
+        <div style="font-weight:900">李雅郁</div>
+        <div style="font-size:.8rem;color:var(--muted)">科技系 • 設計 × 程式</div>
+      </div>
+    </div>
+
+    <nav class="main-nav" aria-label="主要導覽">
+      <a href="#about">關於</a>
+      <a href="#skills">技能</a>
+      <a href="#projects">作品集</a>
+      <a href="#contact">聯絡</a>
+    </nav>
+
+    <div class="actions">
+      <button id="themeToggle" class="btn ghost" aria-label="切換深色模式">🌙</button>
+      <a class="btn" id="resumeBtn" href="resume.pdf" download>下載履歷</a>
+      <button class="hamburger" id="menuBtn" aria-label="打開選單">☰</button>
+    </div>
+  </div>
+
+  <!-- mobile menu -->
+  <div id="mobileMenu" class="hidden" style="background:var(--card);padding:1rem;border-top:1px solid rgba(0,0,0,0.04);">
+    <div style="display:flex;flex-direction:column;gap:.6rem;max-width:600px;margin:0 auto">
+      <a href="#about">關於</a>
+      <a href="#skills">技能</a>
+      <a href="#projects">作品集</a>
+      <a href="#contact">聯絡</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <!-- HERO / ABOUT -->
+  <section id="about" class="hero">
+    <div>
+      <!-- 記得把 images/profile.jpg 換成你的照片 -->
+      <img src="images/profile.jpg" alt="李雅郁的大頭照" class="profile-pic card">
+    </div>
+    <div>
+      <h1 class="name">李雅郁</h1>
+      <p class="tagline muted">設計、程式與教育的結合者 — 熱衷於用科技創造實用的教學工具。</p>
+
+      <div class="card fade-up" style="margin-top:1rem">
+        <p>嗨，我是雅郁，目前就讀於台師大科技系。專長包含：程式設計、資料處理與教具設計。歡迎查看我的作品與聯絡我討論合作。</p>
+        <div class="cta-row" style="margin-top:1rem">
+          <a class="btn" href="#contact">聯絡我</a>
+          <a class="btn ghost" href="#projects">作品集</a>
+          <button class="btn ghost" id="copyEmail">複製 Email</button>
+        </div>
+      </div>
+
+      <div style="margin-top:.8rem;display:flex;gap:.6rem;flex-wrap:wrap">
+        <a href="#" target="_blank" aria-label="Github (會在此新增連結)">GitHub</a>
+        <a href="#" target="_blank" aria-label="LinkedIn (會在此新增連結)">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" style="margin-top:1.25rem">
+    <h2 class="section-title">技能</h2>
+    <div class="card fade-up">
+      <div class="skills-grid" id="skillsGrid">
+        <div class="skill">
+          <div class="label">程式語言 — C / C++ / Python</div>
+          <div class="progress" aria-hidden="true"><span data-percent="85"></span></div>
+        </div>
+        <div class="skill">
+          <div class="label">前端 — HTML / CSS / JS</div>
+          <div class="progress"><span data-percent="80"></span></div>
+        </div>
+        <div class="skill">
+          <div class="label">資料處理 — Excel / VBA</div>
+          <div class="progress"><span data-percent="88"></span></div>
+        </div>
+        <div class="skill">
+          <div class="label">設計工具 — Figma / Canva</div>
+          <div class="progress"><span data-percent="70"></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" style="margin-top:1.25rem">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem">
+      <h2 class="section-title">作品集</h2>
+      <div>
+        <button class="btn" id="openProjectModal">新增作品</button>
+      </div>
+    </div>
+
+    <div class="card fade-up">
+      <div id="projectsGrid" class="projects-grid">
+        <!-- JS 會把專案渲染到這裡；如果沒有作品會顯示空狀態 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="margin-top:1.25rem">
+    <h2 class="section-title">聯絡我</h2>
+    <div class="card fade-up">
+      <form id="contactForm" class="contact-form" onsubmit="return false;">
+        <input type="text" id="cfName" placeholder="你的名字" required>
+        <input type="email" id="cfEmail" placeholder="你的 Email" required>
+        <input class="full" type="text" id="cfSubject" placeholder="主旨（例如：專案合作）">
+        <textarea class="full" id="cfMessage" placeholder="內容"></textarea>
+        <div class="full" style="display:flex;gap:.6rem;justify-content:flex-end">
+          <button class="btn" id="sendEmail">用 Email 傳送</button>
+          <button class="btn ghost" id="saveMessage">儲存草稿</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div>© <span id="year"></span> 李雅郁 • Built with ♥</div>
+  </div>
+</footer>
+
+<!-- MODALS -->
+<div id="modalRoot"></div>
+
+<script>
+  /* ----------------- 小設定（請自行改成你的 email / social）------------------ */
+  const MY_EMAIL = '41371204H@ntnu.edu.tw';
+  const GITHUB = 'https://github.com/';
+  const RESUME_PATH = 'resume.pdf'; // 放在同一資料夾
+  /* --------------------------------------------------------------------- */
+
+  // 元件選取
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const themeToggle = document.getElementById('themeToggle');
+  const copyEmailBtn = document.getElementById('copyEmail');
+  const resumeBtn = document.getElementById('resumeBtn');
+  const yearSpan = document.getElementById('year');
+
+  // 初始年份
+  yearSpan.textContent = new Date().getFullYear();
+
+  // 漢堡選單
+  menuBtn.addEventListener('click', ()=>{
+    mobileMenu.classList.toggle('hidden');
+  });
+
+  // 深色模式
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const savedTheme = localStorage.getItem('siteTheme');
+  if(savedTheme === 'dark' || (!savedTheme && prefersDark)) document.documentElement.classList.add('dark');
+  themeToggle.addEventListener('click', ()=>{
+    document.documentElement.classList.toggle('dark');
+    const isDark = document.documentElement.classList.contains('dark');
+    localStorage.setItem('siteTheme', isDark ? 'dark' : 'light');
+    themeToggle.textContent = isDark ? '☀️' : '🌙';
+  });
+
+  // 複製 Email
+  copyEmailBtn.addEventListener('click', async ()=>{
+    try{
+      await navigator.clipboard.writeText(MY_EMAIL);
+      copyEmailBtn.textContent = '已複製 ✓';
+      setTimeout(()=> copyEmailBtn.textContent = '複製 Email', 1800);
+    }catch(e){
+      alert('複製失敗，請手動複製：' + MY_EMAIL);
+    }
+  });
+
+  // Skills 動畫（IntersectionObserver）
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        // progress bars
+        const bars = entry.target.querySelectorAll('.progress span');
+        bars.forEach(b=>{ const p = b.getAttribute('data-percent')||70; b.style.width = p+'%'; });
+      }
+    });
+  },{threshold:.2});
+  document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+
+  /* ------------------ 作品集 (localStorage) ------------------ */
+  const projectsKey = 'myProjects_v1';
+  const projectsGrid = document.getElementById('projectsGrid');
+  const modalRoot = document.getElementById('modalRoot');
+
+  function getProjects(){
+    try{ return JSON.parse(localStorage.getItem(projectsKey)) || []; }catch(e){ return []; }
+  }
+  function saveProjects(list){ localStorage.setItem(projectsKey, JSON.stringify(list)); }
+
+  function renderProjects(){
+    const list = getProjects();
+    projectsGrid.innerHTML = '';
+    if(list.length === 0){
+      const emptyCard = document.createElement('div');
+      emptyCard.className = 'project-card card';
+      emptyCard.innerHTML = '<div style="display:flex;flex:1;align-items:center;justify-content:center;min-height:120px"><div class="muted">（目前尚未新增作品 — 點擊右上 "新增作品" 新增）</div></div>';
+      projectsGrid.appendChild(emptyCard);
+      return;
+    }
+    list.forEach((p, idx)=>{
+      const el = document.createElement('div'); el.className = 'project-card card fade-up';
+      el.innerHTML = `
+        ${p.image ? `<img src="${p.image}" alt="${p.title}">` : ''}
+        <div style="display:flex;flex-direction:column;gap:.4rem">
+          <div style="font-weight:700">${p.title}</div>
+          <div class="muted" style="font-size:.95rem">${p.desc || ''}</div>
+          <div style="margin-top:auto;display:flex;gap:.5rem;justify-content:flex-end">
+            ${p.link ? `<a href="${p.link}" target="_blank" class="btn">View</a>` : ''}
+            <button class="btn ghost" data-remove="${idx}">刪除</button>
+          </div>
+        </div>
+      `;
+      projectsGrid.appendChild(el);
+    });
+  }
+
+  // 新增專案 modal
+  document.getElementById('openProjectModal').addEventListener('click', ()=>{
+    openModal(`
+      <div class="card panel">
+        <h3 style="margin-top:0">新增作品</h3>
+        <div style="display:grid;gap:.6rem">
+          <input id="projTitle" placeholder="標題">
+          <input id="projImage" placeholder="圖片路徑或網址（可留空）">
+          <input id="projLink" placeholder="外部連結（可留空）">
+          <textarea id="projDesc" placeholder="簡短描述"></textarea>
+          <div style="display:flex;gap:.6rem;justify-content:flex-end">
+            <button class="btn" id="addProjBtn">新增</button>
+            <button class="btn ghost" id="cancelProj">取消</button>
+          </div>
+        </div>
+      </div>
+    `);
+
+    document.getElementById('cancelProj').addEventListener('click', closeModal);
+    document.getElementById('addProjBtn').addEventListener('click', ()=>{
+      const title = document.getElementById('projTitle').value.trim();
+      if(!title){ alert('請輸入標題'); return; }
+      const image = document.getElementById('projImage').value.trim();
+      const link = document.getElementById('projLink').value.trim();
+      const desc = document.getElementById('projDesc').value.trim();
+      const list = getProjects();
+      list.unshift({title, image, link, desc});
+      saveProjects(list);
+      renderProjects();
+      closeModal();
+    });
+  });
+
+  // 刪除事件代理
+  projectsGrid.addEventListener('click', (e)=>{
+    const idx = e.target.getAttribute('data-remove');
+    if(idx!=null){
+      const list = getProjects();
+      if(confirm('確定要刪除此作品？')){
+        list.splice(idx,1); saveProjects(list); renderProjects();
+      }
+    }
+  });
+
+  function openModal(innerHTML){
+    modalRoot.innerHTML = `<div class="modal" role="dialog" aria-modal="true">${innerHTML}</div>`;
+    // 點背景關閉
+    modalRoot.querySelector('.modal').addEventListener('click', (ev)=>{ if(ev.target === ev.currentTarget) closeModal(); });
+  }
+  function closeModal(){ modalRoot.innerHTML = ''; }
+
+  // render 初始
+  renderProjects();
+
+  /* ------------------ 聯絡表單（mailto + 本地草稿） ------------------ */
+  const contactForm = document.getElementById('contactForm');
+  document.getElementById('sendEmail').addEventListener('click', ()=>{
+    const name = document.getElementById('cfName').value.trim();
+    const email = document.getElementById('cfEmail').value.trim();
+    const subject = document.getElementById('cfSubject').value.trim() || '聯絡：網站表單';
+    const message = document.getElementById('cfMessage').value.trim();
+    if(!name || !email){ alert('請填寫名字與 Email'); return; }
+    const body = encodeURIComponent(`姓名: ${name}\nEmail: ${email}\n\n${message}`);
+    window.location.href = `mailto:${MY_EMAIL}?subject=${encodeURIComponent(subject)}&body=${body}`;
+  });
+
+  // 儲存草稿
+  document.getElementById('saveMessage').addEventListener('click', ()=>{
+    const draft = {
+      name: document.getElementById('cfName').value.trim(),
+      email: document.getElementById('cfEmail').value.trim(),
+      subject: document.getElementById('cfSubject').value.trim(),
+      message: document.getElementById('cfMessage').value.trim(),
+      time: new Date().toISOString()
+    };
+    const drafts = JSON.parse(localStorage.getItem('contactDrafts')||'[]');
+    drafts.unshift(draft); localStorage.setItem('contactDrafts', JSON.stringify(drafts));
+    alert('已儲存草稿（只存在此瀏覽器）');
+  });
+
+  // resume 按鈕
+  resumeBtn.addEventListener('click', ()=>{
+    // 如果沒有 resume.pdf，使用者會看到 404，提醒可自行放入 resume.pdf
+  });
+
+  // smooth scroll for internal links
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', (e)=>{
+      const href = a.getAttribute('href');
+      if(href.length>1){ e.preventDefault(); document.querySelector(href).scrollIntoView({behavior:'smooth',block:'start'}); mobileMenu.classList.add('hidden'); }
+    });
+  });
+
+  // small accessibility: allow keyboard to close modals with ESC
+  document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
+
+  /* ------------------ 載入示範資料（for first-time demo） ------------------ */
+  (function seedDemo(){
+    const existing = getProjects();
+    if(existing.length===0){
+      // 不自動放作品，保持空狀態（使用者可按新增作品）
+    }
+  })();
+
+  /* ---- 可自訂：在這裡更新頁面中顯示的 Email / 社群連結等 ---- */
+  // 示範：把所有內文的 GitHub 連結改成真實的
+  document.querySelectorAll('a[aria-label^="Github"]').forEach(a=>a.href = GITHUB);
+
+</script>
+</body>
+</html>
