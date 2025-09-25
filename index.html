@@ -36,6 +36,7 @@
             --primary: #0d6efd;
             --accent: #f0a500;
             --card: #f8f9fa;
+            --base-font:16px;
         }
         body.dark-mode{
             --bg: #0f1720;
@@ -45,7 +46,8 @@
             --accent: #f3b04a;
             --card: #0b1220;
         }
-        body{background:var(--bg);color:var(--text);transition:background .3s,color .3s}
+        html{font-size:var(--base-font)}
+        body{background:var(--bg);color:var(--text);transition:background .3s,color .3s;font-family:'Open Sans',sans-serif}
         a{color:var(--primary)}
         .navbar, .footer{background:transparent}
         .hero-header{background:transparent}
@@ -68,7 +70,10 @@
 
         /* Dark-mode toggle button */
         .mode-toggle{position:fixed;top:1rem;right:1rem;z-index:999}
-        .mode-toggle button{background:transparent;border:2px solid var(--card);padding:.5rem;border-radius:50%;width:48px;height:48px;display:flex;align-items:center;justify-content:center}
+        .mode-toggle button{background:transparent;border:2px solid var(--card);padding:.5rem;border-radius:50%;width:48px;height:48px;display:flex;align-items:center;justify-content:center;color:var(--text)}
+
+        /* School info no-wrap */
+        .school-info{white-space:nowrap;display:inline-block;font-size:0.95rem}
 
         /* Responsive */
         @media(max-width:991px){
@@ -100,7 +105,7 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light border-bottom border-2 border-white">
                 <a href="#home" class="navbar-brand">
-                    <h1 style="font-size:1rem;letter-spacing:2px">LI,YA,YU</h1>
+                    <h1 style="font-size:1rem;letter-spacing:2px;margin:0">LI,YA,YU</h1>
                 </a>
                 <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse"
                     data-bs-target="#navbarCollapse">
@@ -127,8 +132,8 @@
                     <img src="img/profile.jpg" alt="profile" class="img-fluid rounded-circle" style="max-width:300px;">
                 </div>
                 <div class="col-lg-6">
-                    <h1 class="hero-title-small mb-4 animated slideInRight">李雅郁</h1>
-                    <h5 class="d-inline-block border border-2 border-white py-3 px-5 mb-0 animated slideInRight">國立臺灣師範大學｜科技應用與人力資源發展學系</h5>
+                    <h1 class="hero-title-small mb-4 animated slideInRight" style="font-size:2.8rem;margin:0">李雅郁</h1>
+                    <h5 class="d-inline-block border border-2 border-white py-3 px-5 mb-0 animated slideInRight school-info">國立臺灣師範大學｜科技應用與人力資源發展學系</h5>
                     <p class="mt-4">我是李雅郁，目前就讀國立臺灣師範大學科技應用與人力資源發展學系。我對教育科技與活動企劃特別有興趣，喜歡把創意融入實際執行。個性樂觀細心，重視團隊合作，也樂於挑戰新事物。希望未來能夠結合科技與教育，設計出更多具啟發性的學習工具。</p>
                     <p><i class="fa fa-phone text-primary me-2"></i> 0905-493-518</p>
                     <p><i class="fa fa-envelope text-primary me-2"></i><a href="mailto:winnielee950415@gmail.com">winnielee950415@gmail.com</a></p>
@@ -191,15 +196,15 @@
 
             <div class="contact-wrap">
                 <div class="contact-left">
-                    <h3>Contact</h3>
-                    <p class="lead">Looking forward to hearing from you</p>
+                    <h3>聯絡方式</h3>
+                    <p class="lead">期待收到你的訊息</p>
 
                     <div class="info-block">
-                        <h6>Phone</h6>
+                        <h6>電話</h6>
                         <p>0905-493-518</p>
                     </div>
                     <div class="info-block">
-                        <h6>Email</h6>
+                        <h6>電子郵件</h6>
                         <p><a href="mailto:winnielee950415@gmail.com">winnielee950415@gmail.com</a></p>
                     </div>
                 </div>
@@ -208,19 +213,19 @@
                     <form action="#" method="post">
                         <div class="form-row">
                             <div class="form-group">
-                                <label>姓氏 *</label>
-                                <input type="text" class="form-control" placeholder="姓氏" required>
+                                <label>姓氏</label>
+                                <input type="text" class="form-control" placeholder="姓氏">
                             </div>
                             <div class="form-group">
-                                <label>名字 *</label>
-                                <input type="text" class="form-control" placeholder="名字" required>
+                                <label>名字</label>
+                                <input type="text" class="form-control" placeholder="名字">
                             </div>
                         </div>
 
                         <div class="form-row mt-3">
                             <div class="form-group">
-                                <label>電子郵件 *</label>
-                                <input type="email" class="form-control" placeholder="your@email.com" required>
+                                <label>電子郵件</label>
+                                <input type="email" class="form-control" placeholder="your@email.com">
                             </div>
                             <div class="form-group">
                                 <label>主旨</label>
@@ -306,24 +311,40 @@
             if (s) s.classList.remove('show');
         });
 
-        // dark / light mode toggle
-        const modeBtn = document.getElementById('modeBtn');
-        const modeIcon = document.getElementById('modeIcon');
-        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const saved = localStorage.getItem('site-dark-mode');
-        if (saved === '1' || (saved === null && prefersDark)) {
-            document.body.classList.add('dark-mode');
-            modeIcon.className = 'fas fa-moon';
-        }
+        // dark / light mode toggle (robust)
+        document.addEventListener('DOMContentLoaded', function() {
+            const modeBtn = document.getElementById('modeBtn');
+            const modeIcon = document.getElementById('modeIcon');
 
-        modeBtn.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const isDark = document.body.classList.contains('dark-mode');
-            modeIcon.className = isDark ? 'fas fa-moon' : 'fas fa-sun';
-            localStorage.setItem('site-dark-mode', isDark ? '1' : '0');
+            if (!modeBtn || !modeIcon) {
+                console.warn('mode button or icon not found');
+                return;
+            }
+
+            modeBtn.style.cursor = 'pointer';
+            modeBtn.style.zIndex = '9999';
+
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const saved = localStorage.getItem('site-dark-mode');
+
+            if (saved === '1' || (saved === null && prefersDark)) {
+                document.body.classList.add('dark-mode');
+                modeIcon.className = 'fas fa-moon';
+            } else {
+                document.body.classList.remove('dark-mode');
+                modeIcon.className = 'fas fa-sun';
+            }
+
+            modeBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.body.classList.toggle('dark-mode');
+                const isDark = document.body.classList.contains('dark-mode');
+                modeIcon.className = isDark ? 'fas fa-moon' : 'fas fa-sun';
+                localStorage.setItem('site-dark-mode', isDark ? '1' : '0');
+            });
         });
 
-        // simple scrollspy to highlight nav (bootstrap's scrollspy requires body data attributes)
+        // simple scrollspy to highlight nav
         document.addEventListener('scroll', () => {
             const sections = ['home','experience','contact'];
             let current = 'home';
