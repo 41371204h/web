@@ -27,6 +27,24 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        /* 調整 navbar brand 大小，使其與 nav-link 一致 */
+        .navbar-brand h1 {
+            font-size: 1rem; /* 與 nav-link 大小接近 */
+            margin: 0;
+            letter-spacing: 2px;
+        }
+        /* 讓 hero 裡的大標題顯示為單一名稱 */
+        .hero-title-small {
+            font-size: 3rem; /* 可視需要再調整 */
+            font-weight: 700;
+        }
+        /* 確保點擊列錨點偏移量 (如果有固定頂欄) */
+        :target {
+            scroll-margin-top: 110px;
+        }
+    </style>
 </head>
 
 <body>
@@ -45,7 +63,7 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light border-bottom border-2 border-white">
                 <a href="#home" class="navbar-brand">
-                    <h1>李雅郁</h1>
+                    <h1>LI,YA,YU</h1>
                 </a>
                 <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse"
                     data-bs-target="#navbarCollapse">
@@ -53,10 +71,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto">
-                        <a href="#home" class="nav-item nav-link active">Home</a>
-                        <a href="#about" class="nav-item nav-link">About</a>
-                        <a href="#experience" class="nav-item nav-link">Experience</a>
-                        <a href="#contact" class="nav-item nav-link">Contact</a>
+                        <a href="#home" class="nav-item nav-link active">主頁</a>
+                        <a href="#experience" class="nav-item nav-link">經歷</a>
+                        <a href="#contact" class="nav-item nav-link">聯絡</a>
                     </div>
                 </div>
             </nav>
@@ -73,7 +90,7 @@
                     <img src="img/profile.jpg" alt="profile" class="img-fluid rounded-circle" style="max-width:300px;">
                 </div>
                 <div class="col-lg-6">
-                    <h1 class="display-1 mb-4 animated slideInRight">李雅郁的 <span class="text-primary">個人網站</span></h1>
+                    <h1 class="hero-title-small mb-4 animated slideInRight">李雅郁</h1>
                     <h5 class="d-inline-block border border-2 border-white py-3 px-5 mb-0 animated slideInRight">國立臺灣師範大學｜科技應用與人力資源發展學系</h5>
                     <p class="mt-4">我是李雅郁，目前就讀國立臺灣師範大學科技應用與人力資源發展學系。我對教育科技與活動企劃特別有興趣，喜歡把創意融入實際執行。個性樂觀細心，重視團隊合作，也樂於挑戰新事物。希望未來能夠結合科技與教育，設計出更多具啟發性的學習工具。</p>
                     <p><i class="fa fa-phone text-primary me-2"></i> 0905-493-518</p>
@@ -116,7 +133,7 @@
                         <img src="img/S__64315403_0.jpg" class="card-img-top" alt="宿營器設股">
                         <div class="card-body">
                             <h5 class="card-title">大二</h5>
-                            <p class="card-text">宿營器設股</p>
+                            <p class="card-text">宿營 器設股</p>
                         </div>
                     </div>
                 </div>
@@ -173,9 +190,9 @@
                 </div>
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
                     <h5 class="text-white mb-4">快速連結</h5>
-                    <a class="btn btn-link" href="#about">About</a>
-                    <a class="btn btn-link" href="#experience">Experience</a>
-                    <a class="btn btn-link" href="#contact">Contact</a>
+                    <a class="btn btn-link" href="#home">主頁</a>
+                    <a class="btn btn-link" href="#experience">經歷</a>
+                    <a class="btn btn-link" href="#contact">聯絡</a>
                 </div>
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
                     <h5 class="text-white mb-4">追蹤我</h5>
