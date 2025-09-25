@@ -29,25 +29,62 @@
     <link href="css/style.css" rel="stylesheet">
 
     <style>
-        /* 調整 navbar brand 大小，使其與 nav-link 一致 */
-        .navbar-brand h1 {
-            font-size: 1rem; /* 與 nav-link 大小接近 */
-            margin: 0;
-            letter-spacing: 2px;
+        :root{
+            --bg: #ffffff;
+            --text: #222;
+            --muted: #6c757d;
+            --primary: #0d6efd;
+            --accent: #f0a500;
+            --card: #f8f9fa;
         }
-        /* 讓 hero 裡的大標題顯示為單一名稱 */
-        .hero-title-small {
-            font-size: 3rem; /* 可視需要再調整 */
-            font-weight: 700;
+        body.dark-mode{
+            --bg: #0f1720;
+            --text: #e6eef8;
+            --muted: #a3b1c2;
+            --primary: #66a0ff;
+            --accent: #f3b04a;
+            --card: #0b1220;
         }
-        /* 確保點擊列錨點偏移量 (如果有固定頂欄) */
-        :target {
-            scroll-margin-top: 110px;
+        body{background:var(--bg);color:var(--text);transition:background .3s,color .3s}
+        a{color:var(--primary)}
+        .navbar, .footer{background:transparent}
+        .hero-header{background:transparent}
+        .card{background:var(--card);border:1px solid rgba(0,0,0,0.06)}
+
+        /* Contact form layout to mimic provided screenshot */
+        .contact-wrap{display:flex;gap:2rem;align-items:flex-start}
+        .contact-left{flex:0 0 35%;padding:2rem}
+        .contact-right{flex:1;padding:2rem}
+        .contact-left h3{font-size:3rem;margin-bottom:.5rem}
+        .contact-left p.lead{color:var(--muted);}
+        .contact-left .info-block{margin-top:2rem}
+        .contact-left .info-block h6{font-weight:700}
+        .big-submit{display:block;width:100%;background:var(--accent);color:#111;border:none;padding:1rem 2rem;border-radius:50px;font-size:1.6rem;font-weight:700;box-shadow:0 4px 0 rgba(0,0,0,0.08)}
+        .big-submit:hover{opacity:.95}
+
+        /* Form fields spacing */
+        .form-row{display:flex;gap:1rem}
+        .form-row .form-group{flex:1}
+
+        /* Dark-mode toggle button */
+        .mode-toggle{position:fixed;top:1rem;right:1rem;z-index:999}
+        .mode-toggle button{background:transparent;border:2px solid var(--card);padding:.5rem;border-radius:50%;width:48px;height:48px;display:flex;align-items:center;justify-content:center}
+
+        /* Responsive */
+        @media(max-width:991px){
+            .contact-wrap{flex-direction:column}
+            .contact-left{flex:initial}
+            .mode-toggle{right:.5rem}
         }
     </style>
 </head>
 
 <body>
+    <!-- Dark mode toggle -->
+    <div class="mode-toggle">
+        <button id="modeBtn" aria-label="切換夜間模式"><i id="modeIcon" class="fas fa-sun"></i></button>
+    </div>
+
     <!-- Spinner Start -->
     <div id="spinner"
         class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -63,7 +100,7 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light border-bottom border-2 border-white">
                 <a href="#home" class="navbar-brand">
-                    <h1>LI,YA,YU</h1>
+                    <h1 style="font-size:1rem;letter-spacing:2px">LI,YA,YU</h1>
                 </a>
                 <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse"
                     data-bs-target="#navbarCollapse">
@@ -145,31 +182,65 @@
 
 
     <!-- Contact Start -->
-    <div id="contact" class="container-fluid bg-primary newsletter p-0">
-        <div class="container p-0">
-            <div class="row g-0 align-items-center">
-                <div class="col-md-5 ps-lg-0 text-start wow fadeIn" data-wow-delay="0.2s">
-                    <img class="img-fluid w-100" src="img/newsletter.jpg" alt="contact image">
-                </div>
-                <div class="col-md-7 py-5 newsletter-text wow fadeIn" data-wow-delay="0.5s">
-                    <div class="p-5">
-                        <h1 class="mb-4">聯絡我</h1>
-                        <p class="mb-4">有任何合作或問題歡迎透過 email 或電話聯絡我，或在下方填寫簡短訊息。</p>
-                        <form action="#" method="post">
-                            <div class="position-relative w-100 mb-3">
-                                <input class="form-control border-0 w-100 ps-4" type="text" name="name" placeholder="你的名字" style="height:50px;">
-                            </div>
-                            <div class="position-relative w-100 mb-3">
-                                <input class="form-control border-0 w-100 ps-4" type="email" name="email" placeholder="你的 Email" style="height:50px;">
-                            </div>
-                            <div class="position-relative w-100 mb-3">
-                                <textarea class="form-control border-0 w-100 ps-4" name="message" placeholder="留言內容" style="height:120px;"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-dark px-4">送出</button>
-                        </form>
+    <div id="contact" class="container-fluid p-0">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h1>聯絡</h1>
+                <p class="lead">期待收到你的訊息</p>
+            </div>
+
+            <div class="contact-wrap">
+                <div class="contact-left">
+                    <h3>Contact</h3>
+                    <p class="lead">Looking forward to hearing from you</p>
+
+                    <div class="info-block">
+                        <h6>Phone</h6>
+                        <p>0905-493-518</p>
+                    </div>
+                    <div class="info-block">
+                        <h6>Email</h6>
+                        <p><a href="mailto:winnielee950415@gmail.com">winnielee950415@gmail.com</a></p>
                     </div>
                 </div>
+
+                <div class="contact-right">
+                    <form action="#" method="post">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>姓氏 *</label>
+                                <input type="text" class="form-control" placeholder="姓氏" required>
+                            </div>
+                            <div class="form-group">
+                                <label>名字 *</label>
+                                <input type="text" class="form-control" placeholder="名字" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row mt-3">
+                            <div class="form-group">
+                                <label>電子郵件 *</label>
+                                <input type="email" class="form-control" placeholder="your@email.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label>主旨</label>
+                                <input type="text" class="form-control" placeholder="主旨">
+                            </div>
+                        </div>
+
+                        <div class="mt-3">
+                            <label>訊息</label>
+                            <textarea class="form-control" rows="6">我的</textarea>
+                        </div>
+
+                        <div class="mt-4">
+                            <button class="big-submit" type="submit">送出</button>
+                        </div>
+
+                    </form>
+                </div>
             </div>
+
         </div>
     </div>
     <!-- Contact End -->
@@ -229,9 +300,42 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     <script>
+        // hide spinner
         window.addEventListener('load', function () {
             const s = document.getElementById('spinner');
             if (s) s.classList.remove('show');
+        });
+
+        // dark / light mode toggle
+        const modeBtn = document.getElementById('modeBtn');
+        const modeIcon = document.getElementById('modeIcon');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const saved = localStorage.getItem('site-dark-mode');
+        if (saved === '1' || (saved === null && prefersDark)) {
+            document.body.classList.add('dark-mode');
+            modeIcon.className = 'fas fa-moon';
+        }
+
+        modeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            modeIcon.className = isDark ? 'fas fa-moon' : 'fas fa-sun';
+            localStorage.setItem('site-dark-mode', isDark ? '1' : '0');
+        });
+
+        // simple scrollspy to highlight nav (bootstrap's scrollspy requires body data attributes)
+        document.addEventListener('scroll', () => {
+            const sections = ['home','experience','contact'];
+            let current = 'home';
+            for (const id of sections) {
+                const el = document.getElementById(id);
+                if (!el) continue;
+                const rect = el.getBoundingClientRect();
+                if (rect.top <= 120) current = id;
+            }
+            document.querySelectorAll('.navbar .nav-link').forEach(a => {
+                a.classList.toggle('active', a.getAttribute('href') === '#'+current);
+            });
         });
     </script>
 </body>
