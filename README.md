@@ -4,4 +4,4 @@
 
 作業一：［個人網站］https://41371204h.github.io/web/
 
-作業二：[REACT] http://loccalhost:8081/
+作業二：[REACT] http://localhost:8081/
