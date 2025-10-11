@@ -16,8 +16,8 @@
 
     <style>
         :root{
-            --bg: linear-gradient(180deg,#f6fbff 0%, #fef9f2 100%);
-            --card: #ffffff;
+            --bg: #ffffff;
+            --card: #fbfbfd;
             --muted: #6b7280;
             --text: #0f1720;
             --primary: #2065f4;
@@ -26,11 +26,9 @@
             --radius: 14px;
             --max-width: 1100px;
             --container-pad: 24px;
-            --accent-2: #8be7d0;
-            --accent-3: #ffd6e0;
         }
         body.dark-mode{
-            --bg: linear-gradient(180deg,#071029 0%, #071827 100%);
+            --bg: #071029;
             --card: #071827;
             --muted: #9fb0c9;
             --text: #e6f0ff;
@@ -46,7 +44,7 @@
 
         /* Header / Navbar */
         .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
-        .brand{font-family:'Space Grotesk',sans-serif;letter-spacing:3px;font-weight:700;cursor:pointer}
+        .brand{font-family:'Space Grotesk',sans-serif;letter-spacing:3px;font-weight:700}
         .nav-links{display:flex;gap:16px}
         .nav-links a{padding:8px 12px;border-radius:8px}
         .nav-links a.active{background:linear-gradient(90deg,var(--primary),#6ea8ff);color:#fff}
@@ -54,59 +52,33 @@
         /* Hero */
         .hero{display:grid;grid-template-columns: 320px 1fr;gap:28px;align-items:center;padding:40px 0}
         .avatar{width:320px;height:320px;border-radius:50%;overflow:hidden;border:8px solid var(--glass);box-shadow:0 10px 30px rgba(2,6,23,0.06);}
-        .avatar img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
-        .avatar:hover img{transform:scale(1.04) rotate(-1deg)}
+        .avatar img{width:100%;height:100%;object-fit:cover;display:block}
         .hero h1{font-family:'Space Grotesk',sans-serif;font-size:2.6rem;margin:0}
         .school{display:inline-block;margin-top:10px;padding:10px 14px;border-radius:999px;background:linear-gradient(90deg,rgba(32,101,244,0.08),rgba(245,158,11,0.06));color:var(--muted);font-weight:600}
         .hero p{line-height:1.75;color:var(--muted)}
         .contact-small{display:flex;gap:12px;margin-top:12px;align-items:center}
-        .contact-small a{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;background:transparent;border:1px solid rgba(0,0,0,0.04);transition:transform .2s}
-        .contact-small a:hover{transform:translateY(-3px)}
-
-        /* Decorative blobs */
-        .blob{position:absolute;border-radius:50%;filter:blur(36px);opacity:0.12;pointer-events:none}
-        .blob.one{width:260px;height:260px;right:6%;top:8%;background:linear-gradient(180deg,var(--accent),var(--accent-2))}
-        .blob.two{width:180px;height:180px;left:4%;bottom:6%;background:linear-gradient(180deg,var(--accent-3),#ffd8a8)}
+        .contact-small a{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;background:transparent;border:1px solid rgba(0,0,0,0.04)}
 
         /* Sections */
         section{padding:28px 0}
-        h2{font-family:'Space Grotesk',sans-serif;margin:0 0 18px 0;display:inline-block}
-
-        /* Heading animation */
-        @keyframes popIn {
-            0%{opacity:0;transform:translateY(-8px) scale(0.98);letter-spacing:2px}
-            100%{opacity:1;transform:translateY(0) scale(1);letter-spacing:0}
-        }
-        h2{animation:popIn .7s ease both}
+        h2{font-family:'Space Grotesk',sans-serif;margin:0 0 18px 0}
 
         /* About text box */
         .about-card{background:var(--card);padding:20px;border-radius:var(--radius);box-shadow:0 6px 18px rgba(2,6,23,0.06)}
 
-        /* Experience cards row styling (preserve original photos in one row) */
-        .experience-row{display:flex;gap:18px;align-items:stretch;flex-wrap:nowrap;overflow:visible;padding-bottom:6px;justify-content:space-between} /* keep row layout on desktop */justify-content:flex-start} /* keep row layout, allow horizontal scroll on small viewports */
-        .exp-card{flex:0 0 calc(33.333% - 12px);max-width:360px;background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 8px 24px rgba(2,6,23,0.06);transition:transform .35s,box-shadow .35s}
-        .exp-card img{width:100%;height:180px;object-fit:cover;display:block} /* smaller image height so cards don't dominate */
-        .exp-card .card-body{padding:14px}
-        .exp-card:hover{transform:translateY(-8px);box-shadow:0 18px 36px rgba(2,6,23,0.12)}
-        .exp-card{flex:0 0 32%;background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 8px 24px rgba(2,6,23,0.06);transition:transform .35s,box-shadow .35s}
-        .exp-card img{width:100%;height:220px;object-fit:cover;display:block}
-        .exp-card .card-body{padding:14px}
-        .exp-card:hover{transform:translateY(-8px);box-shadow:0 18px 36px rgba(2,6,23,0.12)}
-
         /* Traits & Skills - bar charts */
         .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-        .bars .bar{background:rgba(0,0,0,0.03);border-radius:10px;padding:12px;margin-bottom:12px}
+        .bars .bar{background:rgba(0,0,0,0.04);border-radius:10px;padding:12px;margin-bottom:12px}
         .bar .label{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
         .bar .label span.name{font-weight:600}
-        .bar .track{height:16px;background:rgba(0,0,0,0.06);border-radius:999px;overflow:hidden}
+        .bar .track{height:14px;background:rgba(0,0,0,0.06);border-radius:999px;overflow:hidden}
         .bar .fill{height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,var(--primary),#7ad0ff);display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#04233a;font-weight:700}
         .bar .fill.dark{color:var(--text)}
         .percent{font-size:0.95rem;color:var(--muted)}
 
         /* Advantages cards */
         .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-        .card-adv{background:linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,255,255,0.72));padding:16px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.04);transition:transform .28s}
-        .card-adv:hover{transform:translateY(-6px)}
+        .card-adv{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.04)}
         .card-adv h3{margin:0 0 8px 0}
         .card-adv p{margin:0;color:var(--muted)}
 
@@ -127,7 +99,6 @@
             .nav-links{display:none}
             .grid-2{grid-template-columns:1fr}
             .contact-grid{grid-template-columns:1fr}
-            .experience-row{flex-wrap:nowrap}
         }
 
     </style>
@@ -142,7 +113,6 @@
             <a href="#about">關於我</a>
             <a href="#skills">技能</a>
             <a href="#advantages">個人優勢</a>
-            <a href="#experience">經歷</a>
             <a href="#contact">聯絡</a>
         </nav>
     </div>
@@ -160,15 +130,14 @@
                 <div style="height:16px"></div>
 
                 <div class="about-card">
-                    <p class="about-line" style="--d:0.08s;margin:0 0 12px 0;line-height:1.7">嗨～我是個可E可I的人！剛認識我的時候可能會覺得我安安靜靜的，那只是我還在觀察環境😉</p>
+                    <p style="margin:0 0 12px 0;line-height:1.7">嗨～我是個可E可I的人！剛認識我的時候可能會覺得我安安靜靜的，那只是我還在觀察環境😉<br>
+                    其實只要熟悉起來，或者有人主動和我搭話，我就會立刻把開關打開、變得很健談！</p>
 
-                    <p class="about-line" style="--d:0.18s;margin:0 0 12px 0;line-height:1.7">其實只要熟悉起來，或者有人主動和我搭話，我就會立刻把開關打開、變得很健談！</p>
+                    <p style="margin:0 0 12px 0;line-height:1.7">平常喜歡追劇、聽音樂，也超愛看棒球⚾，不管是和朋友一起去球場應援，還是邊吃宵夜邊看轉播，都能讓我覺得超放鬆。</p>
 
-                    <p class="about-line" style="--d:0.28s;margin:0 0 12px 0;line-height:1.7">平常喜歡追劇、聽音樂，也超愛看棒球⚾，不管是和朋友一起去球場應援，還是邊吃宵夜邊看轉播，都能讓我覺得超放鬆。</p>
+                    <p style="margin:0 0 12px 0;line-height:1.7">我喜歡用照片、文字或小影片留住那些不起眼但溫柔的瞬間，因為日常的點滴，常常比想像中更值得珍惜。</p>
 
-                    <p class="about-line" style="--d:0.38s;margin:0 0 12px 0;line-height:1.7">我喜歡用照片、文字或小影片留住那些不起眼但溫柔的瞬間，因為日常的點滴，常常比想像中更值得珍惜。</p>
-
-                    <p class="about-line" style="--d:0.48s;margin:0;line-height:1.7">如果你也喜歡追劇、聽音樂，或是一起聊球賽、分享生活，那我們一定會聊得很開心！🌿</p>
+                    <p style="margin:0;line-height:1.7">如果你也喜歡追劇、聽音樂，或是一起聊球賽、分享生活，那我們一定會聊得很開心！🌿</p>
                 </div>
 
                 <div class="contact-small">
@@ -180,48 +149,7 @@
         </div>
     </div>
 
-    <!-- Experience Start -->
-    <div id="experience" class="container-fluid py-5">
-        <div class="container">
-            <div class="text-center wow fadeIn" data-wow-delay="0.1s">
-                <h1 class="mb-5">經歷</h1>
-            </div>
-
-            <div class="row g-4">
-                <div class="col-md-4 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="card h-100">
-                        <img src="img/S__64315399_0.jpg" class="card-img-top" alt="大一">
-                        <div class="card-body">
-                            <h5 class="card-title">大一</h5>
-                            <p class="card-text">科技營活動股</p>
-                        </div>
-                    </div>
-                </div>
-                 <div class="col-md-4 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="card h-100">
-                        <img src="img/S__64315401_0.jpg" class="card-img-top" alt="大一">
-                        <div class="card-body">
-                            <h5 class="card-title">大一</h5>
-                            <p class="card-text">科技之夜公關股</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="card h-100">
-                        <img src="img/S__64315403.jpg" class="card-img-top" alt="宿營器設股">
-                        <div class="card-body">
-                            <h5 class="card-title">大二</h5>
-                            <p class="card-text">宿營 器設股</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <!-- Experience End -->
-
-<!-- Skills & Traits -->
+    <!-- Skills & Traits -->
     <div class="container" id="skills">
         <section>
             <h2>個人特質 & 技能</h2>
@@ -341,79 +269,35 @@
                 <div style="color:var(--muted)">想了解更多或合作，歡迎透過上方聯絡方式聯繫我。</div>
             </div>
         </div>
-    <\/footer>
-
-    <!-- Shortcut helper (bottom-left) -->
-    <div id="shortcutHelper" style="position:fixed;left:14px;bottom:14px;background:rgba(255,255,255,0.9);padding:8px 12px;border-radius:999px;box-shadow:0 6px 18px rgba(2,6,23,0.08);font-size:13px;color:var(--muted);z-index:9999">快捷鍵：Alt+H 主頁 · Alt+A 關於 · Alt+K 技能 · Alt+E 經歷 · Alt+V 優勢 · Alt+C 聯絡</div>
+    </footer>
 
     <script>
-        // animate bars on load with percentage count-up and stagger
+        // animate bars on load
         function animateBars(){
             document.querySelectorAll('.bar').forEach((b,i)=>{
-                const p = parseInt(b.getAttribute('data-percent')) || 0;
+                const p = b.getAttribute('data-percent') || '0';
                 const fill = b.querySelector('.fill');
-                const percentLabel = b.querySelector('.percent');
+                // delay for stagger effect
                 setTimeout(()=>{
                     fill.style.transition = 'width 900ms cubic-bezier(.2,.9,.2,1)';
                     fill.style.width = p + '%';
-                    // count up numeric percent inside label
-                    let start = 0;
-                    const step = Math.max(1, Math.floor(p/20));
-                    const id = setInterval(()=>{
-                        start += step;
-                        if(start >= p){ start = p; clearInterval(id); }
-                        percentLabel.textContent = start + '%';
-                    }, 30);
-                }, 120 * i);
+                }, 100*i);
             })
         }
-        window.addEventListener('load', function(){
-            animateBars();
-            // animate experience cards entry
-            document.querySelectorAll('.exp-card').forEach((c,idx)=>{
-                c.style.opacity = 0;
-                c.style.transform = 'translateY(12px)';
-                setTimeout(()=>{ c.style.transition = 'all 450ms ease'; c.style.opacity = 1; c.style.transform = 'translateY(0)'; }, idx*120 + 300);
-            });
-            // subtle heading letter animation
-            document.querySelectorAll('h2').forEach((h,idx)=>{
-                h.style.opacity = 0; h.style.transform = 'translateY(-6px)';
-                setTimeout(()=>{ h.style.transition = 'all 520ms cubic-bezier(.2,.9,.2,1)'; h.style.opacity = 1; h.style.transform = 'translateY(0)'; }, 150*idx);
-            });
-        });
+        window.addEventListener('load', animateBars);
 
-        // Simple dark-mode toggle with localStorage (double-click brand to toggle)
+        // Simple dark-mode toggle with localStorage
         (function(){
             const key = 'site-dark-mode-v1';
             const saved = localStorage.getItem(key);
             if(saved === '1') document.body.classList.add('dark-mode');
+            // double-click brand to toggle (small hidden control)
             document.querySelector('.brand').addEventListener('dblclick', ()=>{
                 document.body.classList.toggle('dark-mode');
                 localStorage.setItem(key, document.body.classList.contains('dark-mode')? '1':'0');
             });
         })();
-
-        // keyboard shortcuts: Alt+<key> to jump to sections
-        (function(){
-            const map = {
-                'h':'home',
-                'a':'about',
-                'k':'skills',
-                'e':'experience',
-                'v':'advantages',
-                'c':'contact'
-            }
-            document.addEventListener('keydown', function(ev){
-                if(!ev.altKey) return; // require Alt
-                const key = ev.key.toLowerCase();
-                if(map[key]){
-                    ev.preventDefault();
-                    const el = document.getElementById(map[key]);
-                    if(el){ el.scrollIntoView({behavior:'smooth',block:'start'}); }
-                }
-            });
-        })();
-    <\/script>
+    </script>
 </body>
 
 </html>
