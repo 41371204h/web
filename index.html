@@ -15,25 +15,26 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
     <style>
+        /* 調色說明：採用清新綠松 + 珊瑚粉對比，白色底與柔和陰影，讓照片與文字更突出 */
         :root{
-            --bg: #ffffff;
-            --card: #fbfbfd;
-            --muted: #6b7280;
-            --text: #0f1720;
-            --primary: #2065f4;
-            --accent: #f59e0b;
-            --glass: rgba(255,255,255,0.6);
+            --bg: #f7fcfb;            /* 頁面背景：非常淺的綠松色 */
+            --card: #ffffff;          /* 卡片背景：純白 */
+            --muted: #6b7280;        /* 次要文字 */
+            --text: #04202a;         /* 主要文字：深青綠 */
+            --primary: #0ea5a4;      /* 主色（按鈕、連結）：綠松色） */
+            --accent: #ff6b9a;       /* 強調色（按鈕底色等）：珊瑚粉 */
+            --glass: rgba(14,165,164,0.08);
             --radius: 14px;
             --max-width: 1100px;
             --container-pad: 24px;
         }
         body.dark-mode{
-            --bg: #071029;
-            --card: #071827;
+            --bg: #041218;           /* 深色背景 */
+            --card: #071827;         /* 卡片深色 */
             --muted: #9fb0c9;
             --text: #e6f0ff;
-            --primary: #5ea0ff;
-            --accent: #f3b04a;
+            --primary: #4fd6d3;      /* 深色模式下較亮的綠松 */
+            --accent: #ff8fb0;       /* 深色下的珊瑚粉 */
             --glass: rgba(10,16,24,0.6);
         }
         *{box-sizing:border-box}
@@ -44,51 +45,52 @@
 
         /* Header / Navbar */
         .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0;position:relative}
-        .brand{font-family:'Space Grotesk',sans-serif;letter-spacing:3px;font-weight:700;cursor:pointer}
+        .brand{font-family:'Space Grotesk',sans-serif;letter-spacing:3px;font-weight:700;cursor:pointer;color:var(--text)}
         .nav-links{display:flex;gap:12px}
         .nav-links a{padding:8px 12px;border-radius:8px}
-        .nav-links a.active{background:linear-gradient(90deg,var(--primary),#6ea8ff);color:#fff}
+        .nav-links a.active{background:linear-gradient(90deg,var(--primary),#6ee7e5);color:#00333b}
 
         /* Quick links (top-right) */
         .quicklinks{position:absolute;right:0;top:50%;transform:translateY(-50%);display:flex;gap:8px}
-        .quicklinks a{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:999px;background:linear-gradient(90deg,rgba(32,101,244,0.08),rgba(245,158,11,0.06));border:1px solid rgba(0,0,0,0.04);font-weight:600}
+        .quicklinks a{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:999px;background:linear-gradient(90deg,rgba(14,165,164,0.08),rgba(255,107,154,0.06));border:1px solid rgba(0,0,0,0.04);font-weight:600}
 
         /* Hero */
         .hero{display:grid;grid-template-columns: 320px 1fr;gap:28px;align-items:center;padding:40px 0}
-        .avatar{width:320px;height:320px;border-radius:50%;overflow:hidden;border:8px solid var(--glass);box-shadow:0 10px 30px rgba(2,6,23,0.06);}
+        .avatar{width:320px;height:320px;border-radius:50%;overflow:hidden;border:8px solid var(--glass);box-shadow:0 14px 40px rgba(2,16,18,0.06);}
         .avatar img{width:100%;height:100%;object-fit:cover;display:block}
-        .hero h1{font-family:'Space Grotesk',sans-serif;font-size:2.6rem;margin:0}
-        .school{display:inline-block;margin-top:10px;padding:10px 14px;border-radius:999px;background:linear-gradient(90deg,rgba(32,101,244,0.08),rgba(245,158,11,0.06));color:var(--muted);font-weight:600}
+        .hero h1{font-family:'Space Grotesk',sans-serif;font-size:2.6rem;margin:0;color:var(--text)}
+        .school{display:inline-block;margin-top:10px;padding:10px 14px;border-radius:999px;background:linear-gradient(90deg,rgba(14,165,164,0.06),rgba(255,107,154,0.04));color:var(--muted);font-weight:600}
         .hero p{line-height:1.75;color:var(--muted)}
         .contact-small{display:flex;gap:12px;margin-top:12px;align-items:center}
         .contact-small a{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;background:transparent;border:1px solid rgba(0,0,0,0.04)}
 
         /* Sections */
         section{padding:28px 0}
-        h2{font-family:'Space Grotesk',sans-serif;margin:0 0 18px 0}
+        h2{font-family:'Space Grotesk',sans-serif;margin:0 0 18px 0;color:var(--text)}
 
         /* About text box */
-        .about-card{background:var(--card);padding:20px;border-radius:var(--radius);box-shadow:0 6px 18px rgba(2,6,23,0.06)}
+        .about-card{background:var(--card);padding:20px;border-radius:var(--radius);box-shadow:0 10px 30px rgba(2,16,18,0.06)}
 
         /* Traits & Skills - bar charts */
         .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-        .bars .bar{background:rgba(0,0,0,0.04);border-radius:10px;padding:12px;margin-bottom:12px}
+        .bars .bar{background:rgba(2,16,18,0.03);border-radius:10px;padding:12px;margin-bottom:12px}
         .bar .label{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
         .bar .label span.name{font-weight:600}
-        .bar .track{height:14px;background:rgba(0,0,0,0.06);border-radius:999px;overflow:hidden}
-        .bar .fill{height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,var(--primary),#7ad0ff);display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#04233a;font-weight:700}
+        .bar .track{height:14px;background:rgba(2,16,18,0.06);border-radius:999px;overflow:hidden}
+        /* 使用主色到強調色的漸層 */
+        .bar .fill{height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#021418;font-weight:700}
         .bar .fill.dark{color:var(--text)}
         .percent{font-size:0.95rem;color:var(--muted)}
 
         /* Advantages cards */
         .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-        .card-adv{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.04)}
-        .card-adv h3{margin:0 0 8px 0}
+        .card-adv{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 8px 24px rgba(2,16,18,0.04)}
+        .card-adv h3{margin:0 0 8px 0;color:var(--text)}
         .card-adv p{margin:0;color:var(--muted)}
 
         /* Experience (cards) */
-        #experience .card{border-radius:12px;overflow:hidden;box-shadow:0 12px 30px rgba(2,6,23,0.06);background:var(--card);transition:transform .35s ease,box-shadow .35s ease}
-        #experience .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(2,6,23,0.08)}
+        #experience .card{border-radius:12px;overflow:hidden;box-shadow:0 12px 30px rgba(2,16,18,0.06);background:var(--card);transition:transform .35s ease,box-shadow .35s ease}
+        #experience .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(2,16,18,0.08)}
         #experience .card-img-top{width:100%;height:180px;object-fit:cover;display:block}
         .row{display:flex;flex-wrap:wrap;gap:16px}
         .col-md-4{flex:1 1 calc(33.333% - 16px);min-width:240px}
