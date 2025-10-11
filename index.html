@@ -83,7 +83,11 @@
         .about-card{background:var(--card);padding:20px;border-radius:var(--radius);box-shadow:0 6px 18px rgba(2,6,23,0.06)}
 
         /* Experience cards row styling (preserve original photos in one row) */
-        .experience-row{display:flex;gap:18px;align-items:stretch;flex-wrap:nowrap;overflow:auto;padding-bottom:6px}
+        .experience-row{display:flex;gap:18px;align-items:stretch;flex-wrap:nowrap;overflow:auto;padding-bottom:6px;justify-content:flex-start} /* keep row layout, allow horizontal scroll on small viewports */
+        .exp-card{flex:0 0 30%;max-width:320px;background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 8px 24px rgba(2,6,23,0.06);transition:transform .35s,box-shadow .35s}
+        .exp-card img{width:100%;height:180px;object-fit:cover;display:block} /* smaller image height so cards don't dominate */
+        .exp-card .card-body{padding:14px}
+        .exp-card:hover{transform:translateY(-8px);box-shadow:0 18px 36px rgba(2,6,23,0.12)}
         .exp-card{flex:0 0 32%;background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 8px 24px rgba(2,6,23,0.06);transition:transform .35s,box-shadow .35s}
         .exp-card img{width:100%;height:220px;object-fit:cover;display:block}
         .exp-card .card-body{padding:14px}
@@ -138,6 +142,7 @@
             <a href="#about">關於我</a>
             <a href="#skills">技能</a>
             <a href="#advantages">個人優勢</a>
+            <a href="#experience">經歷</a>
             <a href="#contact">聯絡</a>
         </nav>
     </div>
@@ -335,35 +340,79 @@
                 <div style="color:var(--muted)">想了解更多或合作，歡迎透過上方聯絡方式聯繫我。</div>
             </div>
         </div>
-    </footer>
+    <\/footer>
+
+    <!-- Shortcut helper (bottom-left) -->
+    <div id="shortcutHelper" style="position:fixed;left:14px;bottom:14px;background:rgba(255,255,255,0.9);padding:8px 12px;border-radius:999px;box-shadow:0 6px 18px rgba(2,6,23,0.08);font-size:13px;color:var(--muted);z-index:9999">快捷鍵：Alt+H 主頁 · Alt+A 關於 · Alt+K 技能 · Alt+E 經歷 · Alt+V 優勢 · Alt+C 聯絡</div>
 
     <script>
-        // animate bars on load
+        // animate bars on load with percentage count-up and stagger
         function animateBars(){
             document.querySelectorAll('.bar').forEach((b,i)=>{
-                const p = b.getAttribute('data-percent') || '0';
+                const p = parseInt(b.getAttribute('data-percent')) || 0;
                 const fill = b.querySelector('.fill');
-                // delay for stagger effect
+                const percentLabel = b.querySelector('.percent');
                 setTimeout(()=>{
                     fill.style.transition = 'width 900ms cubic-bezier(.2,.9,.2,1)';
                     fill.style.width = p + '%';
-                }, 100*i);
+                    // count up numeric percent inside label
+                    let start = 0;
+                    const step = Math.max(1, Math.floor(p/20));
+                    const id = setInterval(()=>{
+                        start += step;
+                        if(start >= p){ start = p; clearInterval(id); }
+                        percentLabel.textContent = start + '%';
+                    }, 30);
+                }, 120 * i);
             })
         }
-        window.addEventListener('load', animateBars);
+        window.addEventListener('load', function(){
+            animateBars();
+            // animate experience cards entry
+            document.querySelectorAll('.exp-card').forEach((c,idx)=>{
+                c.style.opacity = 0;
+                c.style.transform = 'translateY(12px)';
+                setTimeout(()=>{ c.style.transition = 'all 450ms ease'; c.style.opacity = 1; c.style.transform = 'translateY(0)'; }, idx*120 + 300);
+            });
+            // subtle heading letter animation
+            document.querySelectorAll('h2').forEach((h,idx)=>{
+                h.style.opacity = 0; h.style.transform = 'translateY(-6px)';
+                setTimeout(()=>{ h.style.transition = 'all 520ms cubic-bezier(.2,.9,.2,1)'; h.style.opacity = 1; h.style.transform = 'translateY(0)'; }, 150*idx);
+            });
+        });
 
-        // Simple dark-mode toggle with localStorage
+        // Simple dark-mode toggle with localStorage (double-click brand to toggle)
         (function(){
             const key = 'site-dark-mode-v1';
             const saved = localStorage.getItem(key);
             if(saved === '1') document.body.classList.add('dark-mode');
-            // double-click brand to toggle (small hidden control)
             document.querySelector('.brand').addEventListener('dblclick', ()=>{
                 document.body.classList.toggle('dark-mode');
                 localStorage.setItem(key, document.body.classList.contains('dark-mode')? '1':'0');
             });
         })();
-    </script>
+
+        // keyboard shortcuts: Alt+<key> to jump to sections
+        (function(){
+            const map = {
+                'h':'home',
+                'a':'about',
+                'k':'skills',
+                'e':'experience',
+                'v':'advantages',
+                'c':'contact'
+            }
+            document.addEventListener('keydown', function(ev){
+                if(!ev.altKey) return; // require Alt
+                const key = ev.key.toLowerCase();
+                if(map[key]){
+                    ev.preventDefault();
+                    const el = document.getElementById(map[key]);
+                    if(el){ el.scrollIntoView({behavior:'smooth',block:'start'}); }
+                }
+            });
+        })();
+    <\/script>
 </body>
 
 </html>
