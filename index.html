@@ -16,8 +16,8 @@
 
     <style>
         :root{
-            --bg: #ffffff;
-            --card: #fbfbfd;
+            --bg: linear-gradient(180deg,#f6fbff 0%, #fef9f2 100%);
+            --card: #ffffff;
             --muted: #6b7280;
             --text: #0f1720;
             --primary: #2065f4;
@@ -26,9 +26,11 @@
             --radius: 14px;
             --max-width: 1100px;
             --container-pad: 24px;
+            --accent-2: #8be7d0;
+            --accent-3: #ffd6e0;
         }
         body.dark-mode{
-            --bg: #071029;
+            --bg: linear-gradient(180deg,#071029 0%, #071827 100%);
             --card: #071827;
             --muted: #9fb0c9;
             --text: #e6f0ff;
@@ -44,7 +46,7 @@
 
         /* Header / Navbar */
         .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
-        .brand{font-family:'Space Grotesk',sans-serif;letter-spacing:3px;font-weight:700}
+        .brand{font-family:'Space Grotesk',sans-serif;letter-spacing:3px;font-weight:700;cursor:pointer}
         .nav-links{display:flex;gap:16px}
         .nav-links a{padding:8px 12px;border-radius:8px}
         .nav-links a.active{background:linear-gradient(90deg,var(--primary),#6ea8ff);color:#fff}
@@ -52,33 +54,55 @@
         /* Hero */
         .hero{display:grid;grid-template-columns: 320px 1fr;gap:28px;align-items:center;padding:40px 0}
         .avatar{width:320px;height:320px;border-radius:50%;overflow:hidden;border:8px solid var(--glass);box-shadow:0 10px 30px rgba(2,6,23,0.06);}
-        .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+        .avatar img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+        .avatar:hover img{transform:scale(1.04) rotate(-1deg)}
         .hero h1{font-family:'Space Grotesk',sans-serif;font-size:2.6rem;margin:0}
         .school{display:inline-block;margin-top:10px;padding:10px 14px;border-radius:999px;background:linear-gradient(90deg,rgba(32,101,244,0.08),rgba(245,158,11,0.06));color:var(--muted);font-weight:600}
         .hero p{line-height:1.75;color:var(--muted)}
         .contact-small{display:flex;gap:12px;margin-top:12px;align-items:center}
-        .contact-small a{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;background:transparent;border:1px solid rgba(0,0,0,0.04)}
+        .contact-small a{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;background:transparent;border:1px solid rgba(0,0,0,0.04);transition:transform .2s}
+        .contact-small a:hover{transform:translateY(-3px)}
+
+        /* Decorative blobs */
+        .blob{position:absolute;border-radius:50%;filter:blur(36px);opacity:0.12;pointer-events:none}
+        .blob.one{width:260px;height:260px;right:6%;top:8%;background:linear-gradient(180deg,var(--accent),var(--accent-2))}
+        .blob.two{width:180px;height:180px;left:4%;bottom:6%;background:linear-gradient(180deg,var(--accent-3),#ffd8a8)}
 
         /* Sections */
         section{padding:28px 0}
-        h2{font-family:'Space Grotesk',sans-serif;margin:0 0 18px 0}
+        h2{font-family:'Space Grotesk',sans-serif;margin:0 0 18px 0;display:inline-block}
+
+        /* Heading animation */
+        @keyframes popIn {
+            0%{opacity:0;transform:translateY(-8px) scale(0.98);letter-spacing:2px}
+            100%{opacity:1;transform:translateY(0) scale(1);letter-spacing:0}
+        }
+        h2{animation:popIn .7s ease both}
 
         /* About text box */
         .about-card{background:var(--card);padding:20px;border-radius:var(--radius);box-shadow:0 6px 18px rgba(2,6,23,0.06)}
 
+        /* Experience cards row styling (preserve original photos in one row) */
+        .experience-row{display:flex;gap:18px;align-items:stretch;flex-wrap:nowrap;overflow:auto;padding-bottom:6px}
+        .exp-card{flex:0 0 32%;background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 8px 24px rgba(2,6,23,0.06);transition:transform .35s,box-shadow .35s}
+        .exp-card img{width:100%;height:220px;object-fit:cover;display:block}
+        .exp-card .card-body{padding:14px}
+        .exp-card:hover{transform:translateY(-8px);box-shadow:0 18px 36px rgba(2,6,23,0.12)}
+
         /* Traits & Skills - bar charts */
         .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-        .bars .bar{background:rgba(0,0,0,0.04);border-radius:10px;padding:12px;margin-bottom:12px}
+        .bars .bar{background:rgba(0,0,0,0.03);border-radius:10px;padding:12px;margin-bottom:12px}
         .bar .label{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
         .bar .label span.name{font-weight:600}
-        .bar .track{height:14px;background:rgba(0,0,0,0.06);border-radius:999px;overflow:hidden}
+        .bar .track{height:16px;background:rgba(0,0,0,0.06);border-radius:999px;overflow:hidden}
         .bar .fill{height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,var(--primary),#7ad0ff);display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#04233a;font-weight:700}
         .bar .fill.dark{color:var(--text)}
         .percent{font-size:0.95rem;color:var(--muted)}
 
         /* Advantages cards */
         .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-        .card-adv{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.04)}
+        .card-adv{background:linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,255,255,0.72));padding:16px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.04);transition:transform .28s}
+        .card-adv:hover{transform:translateY(-6px)}
         .card-adv h3{margin:0 0 8px 0}
         .card-adv p{margin:0;color:var(--muted)}
 
@@ -99,6 +123,7 @@
             .nav-links{display:none}
             .grid-2{grid-template-columns:1fr}
             .contact-grid{grid-template-columns:1fr}
+            .experience-row{flex-wrap:nowrap}
         }
 
     </style>
@@ -149,7 +174,7 @@
         </div>
     </div>
 
-  -  <!-- Experience Start -->
+    <!-- Experience Start -->
     <div id="experience" class="container-fluid py-5">
         <div class="container">
             <div class="text-center wow fadeIn" data-wow-delay="0.1s">
@@ -180,7 +205,7 @@
                         <img src="img/S__64315403.jpg" class="card-img-top" alt="宿營器設股">
                         <div class="card-body">
                             <h5 class="card-title">大二</h5>
-                            <p class="card-text">宿營器設股</p>
+                            <p class="card-text">宿營 器設股</p>
                         </div>
                     </div>
                 </div>
