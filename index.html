@@ -6,143 +6,148 @@
     <title>李雅郁的個人網站</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
-
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Space+Grotesk&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <!-- Icon Font -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
     <style>
         :root{
             --bg: #ffffff;
-            --text: #222;
-            --muted: #6c757d;
-            --primary: #0d6efd;
-            --accent: #f0a500;
-            --card: #f8f9fa;
-            --base-font:16px;
+            --card: #fbfbfd;
+            --muted: #6b7280;
+            --text: #0f1720;
+            --primary: #2065f4;
+            --accent: #f59e0b;
+            --glass: rgba(255,255,255,0.6);
+            --radius: 14px;
+            --max-width: 1100px;
+            --container-pad: 24px;
         }
         body.dark-mode{
-            --bg: #0f1720;
-            --text: #e6eef8;
-            --muted: #a3b1c2;
-            --primary: #66a0ff;
+            --bg: #071029;
+            --card: #071827;
+            --muted: #9fb0c9;
+            --text: #e6f0ff;
+            --primary: #5ea0ff;
             --accent: #f3b04a;
-            --card: #0b1220;
+            --glass: rgba(10,16,24,0.6);
         }
-        html{font-size:var(--base-font)}
-        body{background:var(--bg);color:var(--text);transition:background .3s,color .3s;font-family:'Open Sans',sans-serif}
-        a{color:var(--primary)}
-        .navbar, .footer{background:transparent}
-        .hero-header{background:transparent}
-        .card{background:var(--card);border:1px solid rgba(0,0,0,0.06)}
+        *{box-sizing:border-box}
+        html{font-family:'Open Sans',sans-serif;font-size:16px}
+        body{margin:0;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+        a{color:var(--primary);text-decoration:none}
+        .container{max-width:var(--max-width);margin:0 auto;padding:var(--container-pad)}
 
-        /* Contact form layout to mimic provided screenshot */
-        .contact-wrap{display:flex;gap:2rem;align-items:flex-start}
-        .contact-left{flex:0 0 35%;padding:2rem}
-        .contact-right{flex:1;padding:2rem}
-        .contact-left h3{font-size:3rem;margin-bottom:.5rem}
-        .contact-left p.lead{color:var(--muted);}
-        .contact-left .info-block{margin-top:2rem}
-        .contact-left .info-block h6{font-weight:700}
-        .big-submit{display:block;width:100%;background:var(--accent);color:#111;border:none;padding:1rem 2rem;border-radius:50px;font-size:1.6rem;font-weight:700;box-shadow:0 4px 0 rgba(0,0,0,0.08)}
-        .big-submit:hover{opacity:.95}
+        /* Header / Navbar */
+        .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+        .brand{font-family:'Space Grotesk',sans-serif;letter-spacing:3px;font-weight:700}
+        .nav-links{display:flex;gap:16px}
+        .nav-links a{padding:8px 12px;border-radius:8px}
+        .nav-links a.active{background:linear-gradient(90deg,var(--primary),#6ea8ff);color:#fff}
 
-        /* Form fields spacing */
-        .form-row{display:flex;gap:1rem}
-        .form-row .form-group{flex:1}
+        /* Hero */
+        .hero{display:grid;grid-template-columns: 320px 1fr;gap:28px;align-items:center;padding:40px 0}
+        .avatar{width:320px;height:320px;border-radius:50%;overflow:hidden;border:8px solid var(--glass);box-shadow:0 10px 30px rgba(2,6,23,0.06);}
+        .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+        .hero h1{font-family:'Space Grotesk',sans-serif;font-size:2.6rem;margin:0}
+        .school{display:inline-block;margin-top:10px;padding:10px 14px;border-radius:999px;background:linear-gradient(90deg,rgba(32,101,244,0.08),rgba(245,158,11,0.06));color:var(--muted);font-weight:600}
+        .hero p{line-height:1.75;color:var(--muted)}
+        .contact-small{display:flex;gap:12px;margin-top:12px;align-items:center}
+        .contact-small a{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;background:transparent;border:1px solid rgba(0,0,0,0.04)}
 
-        /* Dark-mode toggle button */
-        .mode-toggle{position:fixed;top:1rem;right:1rem;z-index:999}
-        .mode-toggle button{background:transparent;border:2px solid var(--card);padding:.5rem;border-radius:50%;width:48px;height:48px;display:flex;align-items:center;justify-content:center;color:var(--text)}
+        /* Sections */
+        section{padding:28px 0}
+        h2{font-family:'Space Grotesk',sans-serif;margin:0 0 18px 0}
 
-        /* School info no-wrap */
-        .school-info{white-space:nowrap;display:inline-block;font-size:0.95rem}
+        /* About text box */
+        .about-card{background:var(--card);padding:20px;border-radius:var(--radius);box-shadow:0 6px 18px rgba(2,6,23,0.06)}
+
+        /* Traits & Skills - bar charts */
+        .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+        .bars .bar{background:rgba(0,0,0,0.04);border-radius:10px;padding:12px;margin-bottom:12px}
+        .bar .label{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+        .bar .label span.name{font-weight:600}
+        .bar .track{height:14px;background:rgba(0,0,0,0.06);border-radius:999px;overflow:hidden}
+        .bar .fill{height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,var(--primary),#7ad0ff);display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#04233a;font-weight:700}
+        .bar .fill.dark{color:var(--text)}
+        .percent{font-size:0.95rem;color:var(--muted)}
+
+        /* Advantages cards */
+        .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+        .card-adv{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.04)}
+        .card-adv h3{margin:0 0 8px 0}
+        .card-adv p{margin:0;color:var(--muted)}
+
+        /* Contact section */
+        .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+        .contact-info{background:var(--card);padding:18px;border-radius:12px}
+        .contact-info p{margin:8px 0;color:var(--muted)}
+        .socials{display:flex;gap:12px;margin-top:8px}
+        .socials a{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:8px;border:1px solid rgba(0,0,0,0.06)}
+
+        /* Footer */
+        footer{padding:30px 0;text-align:center;color:var(--muted)}
 
         /* Responsive */
-        @media(max-width:991px){
-            .contact-wrap{flex-direction:column}
-            .contact-left{flex:initial}
-            .mode-toggle{right:.5rem}
+        @media(max-width:900px){
+            .hero{grid-template-columns:1fr;grid-auto-rows:auto;text-align:center}
+            .avatar{margin:0 auto}
+            .nav-links{display:none}
+            .grid-2{grid-template-columns:1fr}
+            .contact-grid{grid-template-columns:1fr}
         }
+
     </style>
 </head>
 
 <body>
-    <!-- Dark mode toggle -->
-    <div class="mode-toggle">
-        <button id="modeBtn" aria-label="切換夜間模式"><i id="modeIcon" class="fas fa-sun"></i></button>
+
+    <div class="container nav">
+        <div class="brand">LI,YA,YU</div>
+        <nav class="nav-links">
+            <a href="#home" class="active">主頁</a>
+            <a href="#about">關於我</a>
+            <a href="#skills">技能</a>
+            <a href="#advantages">個人優勢</a>
+            <a href="#contact">聯絡</a>
+        </nav>
     </div>
 
-    <!-- Spinner Start -->
-    <div id="spinner"
-        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
-    </div>
-    <!-- Spinner End -->
+    <div class="container" id="home">
+        <div class="hero">
+            <div class="avatar">
+                <!-- Replace with your actual image path -->
+                <img src="img/S__65912838.jpg" alt="李雅郁">
+            </div>
+            <div>
+                <h1>李雅郁</h1>
+                <div class="school">國立臺灣師範大學 ｜ 科技應用與人力資源發展學系</div>
 
+                <div style="height:16px"></div>
 
-    <!-- Navbar Start -->
-    <div class="container-fluid sticky-top">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-light border-bottom border-2 border-white">
-                <a href="#home" class="navbar-brand">
-                    <h1 style="font-size:1rem;letter-spacing:2px;margin:0">LI,YA,YU</h1>
-                </a>
-                <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse"
-                    data-bs-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto">
-                        <a href="#home" class="nav-item nav-link active">主頁</a>
-                        <a href="#experience" class="nav-item nav-link">經歷</a>
-                        <a href="#contact" class="nav-item nav-link">聯絡</a>
-                    </div>
+                <div class="about-card">
+                    <p style="margin:0 0 12px 0;line-height:1.7">嗨～我是個可E可I的人！剛認識我的時候可能會覺得我安安靜靜的，那只是我還在觀察環境😉<br>
+                    其實只要熟悉起來，或者有人主動和我搭話，我就會立刻把開關打開、變得很健談！</p>
+
+                    <p style="margin:0 0 12px 0;line-height:1.7">平常喜歡追劇、聽音樂，也超愛看棒球⚾，不管是和朋友一起去球場應援，還是邊吃宵夜邊看轉播，都能讓我覺得超放鬆。</p>
+
+                    <p style="margin:0 0 12px 0;line-height:1.7">我喜歡用照片、文字或小影片留住那些不起眼但溫柔的瞬間，因為日常的點滴，常常比想像中更值得珍惜。</p>
+
+                    <p style="margin:0;line-height:1.7">如果你也喜歡追劇、聽音樂，或是一起聊球賽、分享生活，那我們一定會聊得很開心！🌿</p>
                 </div>
-            </nav>
-        </div>
-    </div>
-    <!-- Navbar End -->
 
-
-    <!-- Hero Start -->
-    <div id="home" class="container-fluid pb-5 hero-header bg-light mb-5">
-        <div class="container py-5">
-            <div class="row g-5 align-items-center mb-5">
-                <div class="col-lg-6 text-center">
-                    <img src="img/S__65912838.jpg" alt="profile" class="img-fluid rounded-circle" style="max-width:300px;">
-                </div>
-                <div class="col-lg-6">
-                    <h1 class="hero-title-small mb-4 animated slideInRight" style="font-size:2.8rem;margin:0">李雅郁</h1>
-                    <h5 class="d-inline-block border border-2 border-white py-3 px-5 mb-0 animated slideInRight school-info">國立臺灣師範大學｜科技應用與人力資源發展學系</h5>
-                    <p class="mt-4">我是李雅郁，目前就讀國立臺灣師範大學科技應用與人力資源發展學系。我對教育科技與活動企劃特別有興趣，喜歡把創意融入實際執行。個性樂觀細心，重視團隊合作，也樂於挑戰新事物。希望未來能夠結合科技與教育，設計出更多具啟發性的學習工具。</p>
-                    <p><i class="fa fa-phone text-primary me-2"></i> 0905-493-518</p>
-                    <p><i class="fa fa-envelope text-primary me-2"></i><a href="mailto:winnielee950415@gmail.com">winnielee950415@gmail.com</a></p>
+                <div class="contact-small">
+                    <a href="tel:0905493518"><i class="fa fa-phone"></i> 0905-493-518</a>
+                    <a href="mailto:41371204h@gapps.ntnu.edu.tw"><i class="fa fa-envelope"></i> 41371204h@gapps.ntnu.edu.tw</a>
+                    <a href="https://www.linkedin.com/in/%E6%9D%8E%E9%9B%85%E9%83%81-%E5%8F%B0%E5%B8%AB%E5%A4%A7-41371204h/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Hero End -->
-
 
     <!-- Experience Start -->
     <div id="experience" class="container-fluid py-5">
@@ -175,7 +180,7 @@
                         <img src="img/S__64315403.jpg" class="card-img-top" alt="宿營器設股">
                         <div class="card-body">
                             <h5 class="card-title">大二</h5>
-                            <p class="card-text">宿營 器設股</p>
+                            <p class="card-text">宿營器設股</p>
                         </div>
                     </div>
                 </div>
@@ -185,179 +190,154 @@
     </div>
     <!-- Experience End -->
 
-
-    <!-- Contact Start -->
-    <div id="contact" class="container-fluid p-0">
-        <div class="container py-5">
-            <div class="text-center mb-5">
-                <h1>聯絡</h1>
-                <p class="lead">期待收到你的訊息</p>
-            </div>
-
-            <div class="contact-wrap">
-                <div class="contact-left">
-                    <h3>聯絡方式</h3>
-                    <p class="lead">期待收到你的訊息</p>
-
-                    <div class="info-block">
-                        <h6>電話</h6>
-                        <p>0905-493-518</p>
-                    </div>
-                    <div class="info-block">
-                        <h6>電子郵件</h6>
-                        <p><a href="mailto:winnielee950415@gmail.com">winnielee950415@gmail.com</a></p>
+<!-- Skills & Traits -->
+    <div class="container" id="skills">
+        <section>
+            <h2>個人特質 & 技能</h2>
+            <div class="grid-2">
+                <div>
+                    <h3 style="font-size:1.05rem;margin-bottom:12px">個人特質</h3>
+                    <div class="bars" aria-hidden="false">
+                        <div class="bar" data-percent="80">
+                            <div class="label"><span class="name">隨和</span><span class="percent">80%</span></div>
+                            <div class="track"><div class="fill" style="width:0%"></div></div>
+                        </div>
+                        <div class="bar" data-percent="90">
+                            <div class="label"><span class="name">責任心</span><span class="percent">90%</span></div>
+                            <div class="track"><div class="fill" style="width:0%"></div></div>
+                        </div>
+                        <div class="bar" data-percent="85">
+                            <div class="label"><span class="name">領導能力</span><span class="percent">85%</span></div>
+                            <div class="track"><div class="fill" style="width:0%"></div></div>
+                        </div>
+                        <div class="bar" data-percent="90">
+                            <div class="label"><span class="name">完美主義</span><span class="percent">90%</span></div>
+                            <div class="track"><div class="fill" style="width:0%"></div></div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="contact-right">
-                    <form action="#" method="post">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label>姓氏</label>
-                                <input type="text" class="form-control" placeholder="姓氏">
-                            </div>
-                            <div class="form-group">
-                                <label>名字</label>
-                                <input type="text" class="form-control" placeholder="名字">
-                            </div>
+                <div>
+                    <h3 style="font-size:1.05rem;margin-bottom:12px">技能</h3>
+                    <div class="bars">
+                        <div class="bar" data-percent="85">
+                            <div class="label"><span class="name">簡報力</span><span class="percent">85%</span></div>
+                            <div class="track"><div class="fill" style="width:0%"></div></div>
                         </div>
-
-                        <div class="form-row mt-3">
-                            <div class="form-group">
-                                <label>電子郵件</label>
-                                <input type="email" class="form-control" placeholder="your@email.com">
-                            </div>
-                            <div class="form-group">
-                                <label>主旨</label>
-                                <input type="text" class="form-control" placeholder="主旨">
-                            </div>
+                        <div class="bar" data-percent="90">
+                            <div class="label"><span class="name">Excel</span><span class="percent">90%</span></div>
+                            <div class="track"><div class="fill" style="width:0%"></div></div>
                         </div>
-
-                        <div class="mt-3">
-                            <label>訊息</label>
-                            <textarea class="form-control" rows="6">我的</textarea>
+                        <div class="bar" data-percent="60">
+                            <div class="label"><span class="name">Python</span><span class="percent">60%</span></div>
+                            <div class="track"><div class="fill" style="width:0%"></div></div>
                         </div>
-
-                        <div class="mt-4">
-                            <button class="big-submit" type="submit">送出</button>
+                        <div class="bar" data-percent="50">
+                            <div class="label"><span class="name">C++</span><span class="percent">50%</span></div>
+                            <div class="track"><div class="fill" style="width:0%"></div></div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
+    <!-- Advantages -->
+    <div class="container" id="advantages">
+        <section>
+            <h2>個人優勢</h2>
+            <div class="cards">
+                <div class="card-adv">
+                    <h3>時間管理</h3>
+                    <p>妥善分配讀書、活動與休閒時間，能在期限前完成任務。</p>
+                </div>
+                <div class="card-adv">
+                    <h3>團隊合作</h3>
+                    <p>擅長分工協調與傾聽，多次在表演與競賽中擔任溝通調停的角色。</p>
+                </div>
+                <div class="card-adv">
+                    <h3>勇於嘗試</h3>
+                    <p>遇到新機會會先嘗試看看，從實作中快速學習修正。</p>
+                </div>
+                <div class="card-adv">
+                    <h3>抱持好奇心</h3>
+                    <p>面對不懂的事喜歡追根究柢，主動查資料或請教他人。</p>
+                </div>
+                <div class="card-adv">
+                    <h3>熱心負責</h3>
+                    <p>時常幫助需要幫助的人，對交付的任務負責到底。</p>
+                </div>
+                <div class="card-adv">
+                    <h3>永不放棄</h3>
+                    <p>遇到困難時先拆解目標、逐步突破，直到達成為止。</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact -->
+    <div class="container" id="contact">
+        <section>
+            <h2>聯絡資訊</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>聯絡方式</h3>
+                    <p><strong>電話：</strong><a href="tel:0905493518">0905-493-518</a></p>
+                    <p><strong>Email：</strong><a href="mailto:41371204h@gapps.ntnu.edu.tw">41371204h@gapps.ntnu.edu.tw</a></p>
+                    <p><strong>LinkedIn：</strong><a href="https://www.linkedin.com/in/%E6%9D%8E%E9%9B%85%E9%83%81-%E5%8F%B0%E5%B8%AB%E5%A4%A7-41371204h/" target="_blank">李雅郁（台師大）</a></p>
+                </div>
+                <div class="contact-info">
+                    <h3>寄信給我</h3>
+                    <form onsubmit="alert('感謝你的訊息！(示範表單，不會送出)');return false;">
+                        <div style="display:flex;gap:8px;margin-bottom:8px">
+                            <input required placeholder="姓名" style="flex:1;padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.06)">
+                            <input required placeholder="Email" type="email" style="flex:1;padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.06)">
+                        </div>
+                        <textarea required placeholder="訊息..." rows="5" style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.06)"></textarea>
+                        <div style="text-align:right;margin-top:8px">
+                            <button style="background:var(--accent);border:none;padding:10px 18px;border-radius:10px;font-weight:700;color:#081018">送出</button>
+                        </div>
                     </form>
                 </div>
             </div>
-
-        </div>
+        </section>
     </div>
-    <!-- Contact End -->
 
-
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-white-50 footer pt-5">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
-                    <h5 class="text-white">關於我</h5>
-                    <p>我是李雅郁—對教育科技與教具設計感興趣的學生，歡迎聯絡討論專案合作。</p>
-                </div>
-                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
-                    <h5 class="text-white mb-4">聯絡方式</h5>
-                    <p><i class="fa fa-phone-alt me-3"></i>0905-493-518</p>
-                    <p><i class="fa fa-envelope me-3"></i><a href="mailto:winnielee950415@gmail.com">winnielee950415@gmail.com</a></p>
-                </div>
-                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
-                    <h5 class="text-white mb-4">快速連結</h5>
-                    <a class="btn btn-link" href="#home">主頁</a>
-                    <a class="btn btn-link" href="#experience">經歷</a>
-                    <a class="btn btn-link" href="#contact">聯絡</a>
-                </div>
-                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
-                    <h5 class="text-white mb-4">追蹤我</h5>
-                    <div class="d-flex pt-2">
-                        <a class="btn btn-outline-primary btn-square border-2 me-2" href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-primary btn-square border-2 me-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-primary btn-square border-2 me-2" href="#"><i class="fab fa-instagram"></i></a>
-                        <a class="btn btn-outline-primary btn-square border-2 me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
+    <footer>
+        <div class="container">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+                <div style="font-weight:700">© 2025 李雅郁</div>
+                <div style="color:var(--muted)">想了解更多或合作，歡迎透過上方聯絡方式聯繫我。</div>
             </div>
         </div>
-        <div class="container wow fadeIn" data-wow-delay="0.1s">
-            <div class="copyright py-3 text-center">
-                &copy; 2025 李雅郁 — All Rights Reserved.
-            </div>
-        </div>
-    </div>
-    <!-- Footer End -->
+    </footer>
 
-
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-
-
-    <!-- JavaScript Libraries -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
     <script>
-        // hide spinner
-        window.addEventListener('load', function () {
-            const s = document.getElementById('spinner');
-            if (s) s.classList.remove('show');
-        });
+        // animate bars on load
+        function animateBars(){
+            document.querySelectorAll('.bar').forEach((b,i)=>{
+                const p = b.getAttribute('data-percent') || '0';
+                const fill = b.querySelector('.fill');
+                // delay for stagger effect
+                setTimeout(()=>{
+                    fill.style.transition = 'width 900ms cubic-bezier(.2,.9,.2,1)';
+                    fill.style.width = p + '%';
+                }, 100*i);
+            })
+        }
+        window.addEventListener('load', animateBars);
 
-        // dark / light mode toggle (robust)
-        document.addEventListener('DOMContentLoaded', function() {
-            const modeBtn = document.getElementById('modeBtn');
-            const modeIcon = document.getElementById('modeIcon');
-
-            if (!modeBtn || !modeIcon) {
-                console.warn('mode button or icon not found');
-                return;
-            }
-
-            modeBtn.style.cursor = 'pointer';
-            modeBtn.style.zIndex = '9999';
-
-            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const saved = localStorage.getItem('site-dark-mode');
-
-            if (saved === '1' || (saved === null && prefersDark)) {
-                document.body.classList.add('dark-mode');
-                modeIcon.className = 'fas fa-moon';
-            } else {
-                document.body.classList.remove('dark-mode');
-                modeIcon.className = 'fas fa-sun';
-            }
-
-            modeBtn.addEventListener('click', function(e) {
-                e.preventDefault();
+        // Simple dark-mode toggle with localStorage
+        (function(){
+            const key = 'site-dark-mode-v1';
+            const saved = localStorage.getItem(key);
+            if(saved === '1') document.body.classList.add('dark-mode');
+            // double-click brand to toggle (small hidden control)
+            document.querySelector('.brand').addEventListener('dblclick', ()=>{
                 document.body.classList.toggle('dark-mode');
-                const isDark = document.body.classList.contains('dark-mode');
-                modeIcon.className = isDark ? 'fas fa-moon' : 'fas fa-sun';
-                localStorage.setItem('site-dark-mode', isDark ? '1' : '0');
+                localStorage.setItem(key, document.body.classList.contains('dark-mode')? '1':'0');
             });
-        });
-
-        // simple scrollspy to highlight nav
-        document.addEventListener('scroll', () => {
-            const sections = ['home','experience','contact'];
-            let current = 'home';
-            for (const id of sections) {
-                const el = document.getElementById(id);
-                if (!el) continue;
-                const rect = el.getBoundingClientRect();
-                if (rect.top <= 120) current = id;
-            }
-            document.querySelectorAll('.navbar .nav-link').forEach(a => {
-                a.classList.toggle('active', a.getAttribute('href') === '#'+current);
-            });
-        });
+        })();
     </script>
 </body>
 
