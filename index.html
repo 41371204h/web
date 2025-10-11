@@ -83,8 +83,8 @@
         .about-card{background:var(--card);padding:20px;border-radius:var(--radius);box-shadow:0 6px 18px rgba(2,6,23,0.06)}
 
         /* Experience cards row styling (preserve original photos in one row) */
-        .experience-row{display:flex;gap:18px;align-items:stretch;flex-wrap:nowrap;overflow:auto;padding-bottom:6px;justify-content:flex-start} /* keep row layout, allow horizontal scroll on small viewports */
-        .exp-card{flex:0 0 30%;max-width:320px;background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 8px 24px rgba(2,6,23,0.06);transition:transform .35s,box-shadow .35s}
+        .experience-row{display:flex;gap:18px;align-items:stretch;flex-wrap:nowrap;overflow:visible;padding-bottom:6px;justify-content:space-between} /* keep row layout on desktop */justify-content:flex-start} /* keep row layout, allow horizontal scroll on small viewports */
+        .exp-card{flex:0 0 calc(33.333% - 12px);max-width:360px;background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 8px 24px rgba(2,6,23,0.06);transition:transform .35s,box-shadow .35s}
         .exp-card img{width:100%;height:180px;object-fit:cover;display:block} /* smaller image height so cards don't dominate */
         .exp-card .card-body{padding:14px}
         .exp-card:hover{transform:translateY(-8px);box-shadow:0 18px 36px rgba(2,6,23,0.12)}
@@ -160,14 +160,15 @@
                 <div style="height:16px"></div>
 
                 <div class="about-card">
-                    <p style="margin:0 0 12px 0;line-height:1.7">嗨～我是個可E可I的人！剛認識我的時候可能會覺得我安安靜靜的，那只是我還在觀察環境😉<br>
-                    其實只要熟悉起來，或者有人主動和我搭話，我就會立刻把開關打開、變得很健談！</p>
+                    <p class="about-line" style="--d:0.08s;margin:0 0 12px 0;line-height:1.7">嗨～我是個可E可I的人！剛認識我的時候可能會覺得我安安靜靜的，那只是我還在觀察環境😉</p>
 
-                    <p style="margin:0 0 12px 0;line-height:1.7">平常喜歡追劇、聽音樂，也超愛看棒球⚾，不管是和朋友一起去球場應援，還是邊吃宵夜邊看轉播，都能讓我覺得超放鬆。</p>
+                    <p class="about-line" style="--d:0.18s;margin:0 0 12px 0;line-height:1.7">其實只要熟悉起來，或者有人主動和我搭話，我就會立刻把開關打開、變得很健談！</p>
 
-                    <p style="margin:0 0 12px 0;line-height:1.7">我喜歡用照片、文字或小影片留住那些不起眼但溫柔的瞬間，因為日常的點滴，常常比想像中更值得珍惜。</p>
+                    <p class="about-line" style="--d:0.28s;margin:0 0 12px 0;line-height:1.7">平常喜歡追劇、聽音樂，也超愛看棒球⚾，不管是和朋友一起去球場應援，還是邊吃宵夜邊看轉播，都能讓我覺得超放鬆。</p>
 
-                    <p style="margin:0;line-height:1.7">如果你也喜歡追劇、聽音樂，或是一起聊球賽、分享生活，那我們一定會聊得很開心！🌿</p>
+                    <p class="about-line" style="--d:0.38s;margin:0 0 12px 0;line-height:1.7">我喜歡用照片、文字或小影片留住那些不起眼但溫柔的瞬間，因為日常的點滴，常常比想像中更值得珍惜。</p>
+
+                    <p class="about-line" style="--d:0.48s;margin:0;line-height:1.7">如果你也喜歡追劇、聽音樂，或是一起聊球賽、分享生活，那我們一定會聊得很開心！🌿</p>
                 </div>
 
                 <div class="contact-small">
