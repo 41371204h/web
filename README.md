@@ -5,5 +5,5 @@
 
 作業一：[個人網站](https://41371204h.github.io/web/)
 
-作業二：[REACT] 
+作業二：[解說影片15分鐘] 
 AItest.tex:
