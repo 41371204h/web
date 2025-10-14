@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="utf-8">
+    <title>李雅郁的個人網站</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Icon Font -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* 調色說明：採用清新綠松 + 珊瑚粉對比，白色底與柔和陰影，讓照片與文字更突出 */
+        :root{
+            --bg: #f7fcfb;            /* 頁面背景：非常淺的綠松色 */
+            --card: #ffffff;          /* 卡片背景：純白 */
+            --muted: #6b7280;        /* 次要文字 */
+            --text: #04202a;         /* 主要文字：深青綠 */
+            --primary: #0ea5a4;      /* 主色（按鈕、連結）：綠松色） */
+            --accent: #ff6b9a;       /* 強調色（按鈕底色等）：珊瑚粉 */
+            --glass: rgba(14,165,164,0.08);
+            --radius: 14px;
+            --max-width: 1100px;
+            --container-pad: 24px;
+        }
+        body.dark-mode{
+            --bg: #041218;           /* 深色背景 */
+            --card: #071827;         /* 卡片深色 */
+            --muted: #9fb0c9;
+            --text: #e6f0ff;
+            --primary: #4fd6d3;      /* 深色模式下較亮的綠松 */
+            --accent: #ff8fb0;       /* 深色下的珊瑚粉 */
+            --glass: rgba(10,16,24,0.6);
+        }
+        *{box-sizing:border-box}
+        html{font-family:'Open Sans',sans-serif;font-size:16px}
+        body{margin:0;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+        a{color:var(--primary);text-decoration:none}
+        .container{max-width:var(--max-width);margin:0 auto;padding:var(--container-pad)}
+
+        /* Header / Navbar */
+        .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0;position:relative}
+        .brand{font-family:'Space Grotesk',sans-serif;letter-spacing:3px;font-weight:700;cursor:pointer;color:var(--text)}
+        .nav-links{display:flex;gap:12px}
+        .nav-links a{padding:8px 12px;border-radius:8px}
+        .nav-links a.active{background:linear-gradient(90deg,var(--primary),#6ee7e5);color:#00333b}
+
+        /* Quick links (top-right) */
+        .quicklinks{position:absolute;right:0;top:50%;transform:translateY(-50%);display:flex;gap:8px}
+        .quicklinks a{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:999px;background:linear-gradient(90deg,rgba(14,165,164,0.08),rgba(255,107,154,0.06));border:1px solid rgba(0,0,0,0.04);font-weight:600}
+
+        /* Hero */
+        .hero{display:grid;grid-template-columns: 320px 1fr;gap:28px;align-items:center;padding:40px 0}
+        .avatar{width:320px;height:320px;border-radius:50%;overflow:hidden;border:8px solid var(--glass);box-shadow:0 14px 40px rgba(2,16,18,0.06);}
+        .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+        .hero h1{font-family:'Space Grotesk',sans-serif;font-size:2.6rem;margin:0;color:var(--text)}
+        .school{display:inline-block;margin-top:10px;padding:10px 14px;border-radius:999px;background:linear-gradient(90deg,rgba(14,165,164,0.06),rgba(255,107,154,0.04));color:var(--muted);font-weight:600}
+        .hero p{line-height:1.75;color:var(--muted)}
+        .contact-small{display:flex;gap:12px;margin-top:12px;align-items:center}
+        .contact-small a{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;background:transparent;border:1px solid rgba(0,0,0,0.04)}
+
+        /* Sections */
+        section{padding:28px 0}
+        h2{font-family:'Space Grotesk',sans-serif;margin:0 0 18px 0;color:var(--text)}
+
+        /* About text box */
+        .about-card{background:var(--card);padding:20px;border-radius:var(--radius);box-shadow:0 10px 30px rgba(2,16,18,0.06)}
+
+        /* Traits & Skills - bar charts */
+        .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+        .bars .bar{background:rgba(2,16,18,0.03);border-radius:10px;padding:12px;margin-bottom:12px}
+        .bar .label{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+        .bar .label span.name{font-weight:600}
+        .bar .track{height:14px;background:rgba(2,16,18,0.06);border-radius:999px;overflow:hidden}
+        /* 使用主色到強調色的漸層 */
+        .bar .fill{height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#021418;font-weight:700}
+        .bar .fill.dark{color:var(--text)}
+        .percent{font-size:0.95rem;color:var(--muted)}
+
+        /* Advantages cards */
+        .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+        .card-adv{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 8px 24px rgba(2,16,18,0.04)}
+        .card-adv h3{margin:0 0 8px 0;color:var(--text)}
+        .card-adv p{margin:0;color:var(--muted)}
+
+        /* Experience (cards) */
+        #experience .card{border-radius:12px;overflow:hidden;box-shadow:0 12px 30px rgba(2,16,18,0.06);background:var(--card);transition:transform .35s ease,box-shadow .35s ease}
+        #experience .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(2,16,18,0.08)}
+        #experience .card-img-top{width:100%;height:180px;object-fit:cover;display:block}
+        .row{display:flex;flex-wrap:wrap;gap:16px}
+        .col-md-4{flex:1 1 calc(33.333% - 16px);min-width:240px}
+
+        /* Contact section */
+        .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+        .contact-info{background:var(--card);padding:18px;border-radius:12px}
+        .contact-info p{margin:8px 0;color:var(--muted)}
+        .socials{display:flex;gap:12px;margin-top:8px}
+        .socials a{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:8px;border:1px solid rgba(0,0,0,0.06)}
+
+        /* Footer */
+        footer{padding:30px 0;text-align:center;color:var(--muted)}
+
+        /* Simple animation utilities */
+        .fade-in{opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .6s ease}
+        .fade-in.show{opacity:1;transform:translateY(0)}
+        .stagger > *{opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease}
+
+        /* Responsive */
+        @media(max-width:900px){
+            .hero{grid-template-columns:1fr;grid-auto-rows:auto;text-align:center}
+            .avatar{margin:0 auto}
+            .nav-links{display:none}
+            .quicklinks{display:none}
+            .grid-2{grid-template-columns:1fr}
+            .contact-grid{grid-template-columns:1fr}
+            .col-md-4{flex:1 1 100%}
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container nav">
+        <div class="brand">LI,YA,YU</div>
+        <nav class="nav-links">
+            <a href="#home" class="active">主頁</a>
+            <a href="#about">關於我</a>
+            <a href="#skills">特質與技能</a>
+            <a href="#advantages">個人優勢</a>
+            <a href="#experience">經歷</a>
+            <a href="#contact">聯絡</a>
+        </nav>
+    </div>
+
+    <div class="container" id="home">
+        <div class="hero">
+            <div class="avatar">
+                <!-- Replace with your actual image path -->
+                <img src="img/S__65912838.jpg" alt="李雅郁">
+            </div>
+            <div>
+                <h1>李雅郁</h1>
+                <div class="school">國立臺灣師範大學 ｜ 科技應用與人力資源發展學系</div>
+
+                <div style="height:16px"></div>
+
+                <div class="about-card fade-in" id="about">
+                    <p style="margin:0 0 12px 0;line-height:1.7">嗨～我是個可E可I的人！剛認識我的時候可能會覺得我安安靜靜的，那只是我還在觀察環境😉<br>
+                    其實只要熟悉起來，或者有人主動和我搭話，我就會立刻把開關打開、變得很健談！</p>
+
+                    <p style="margin:0 0 12px 0;line-height:1.7">平常喜歡追劇、聽音樂，也超愛看棒球⚾，不管是和朋友一起去球場應援，還是邊吃宵夜邊看轉播，都能讓我覺得超放鬆。</p>
+
+                    <p style="margin:0 0 12px 0;line-height:1.7">我喜歡用照片、文字或小影片留住那些不起眼但溫柔的瞬間，因為日常的點滴，常常比想像中更值得珍惜。</p>
+
+                    <p style="margin:0;line-height:1.7">如果你也喜歡追劇、聽音樂，或是一起聊球賽、分享生活，那我們一定會聊得很開心！🌿</p>
+                </div>
+
+                <div class="contact-small">
+                    <a href="tel:0905493518"><i class="fa fa-phone"></i> 0905-493-518</a>
+                    <a href="mailto:41371204h@gapps.ntnu.edu.tw"><i class="fa fa-envelope"></i> 41371204h@gapps.ntnu.edu.tw</a>
+                    <a href="https://www.linkedin.com/in/%E6%9D%8E%E9%9B%85%E9%83%81-%E5%8F%B0%E5%B8%AB%E5%A4%A7-41371204h/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skills & Traits -->
+    <div class="container" id="skills">
+        <section>
+            <h2>個人特質 & 技能</h2>
+            <div class="grid-2">
+                <div>
+                    <h3 style="font-size:1.05rem;margin-bottom:12px">個人特質</h3>
+                    <div class="bars stagger" aria-hidden="false">
+                        <div class="bar fade-in" data-percent="80">
+                            <div class="label"><span class="name">隨和</span><span class="percent">80%</span></div>
+                            <div class="track"><div class="fill" style="width:0%"></div></div>
+                        </div>
+                        <div class="bar fade-in" data-percent="90">
+                            <div class="label"><span class="name">責任心</span><span class="percent">90%</span></div>
+                            <div class="track"><div class="fill" style="width:0%"></div></div>
+                        </div>
+                        <div class="bar fade-in" data-percent="85">
+                            <div class="label"><span class="name">領導能力</span><span class="percent">85%</span></div>
+                            <div class="track"><div class="fill" style="width:0%"></div></div>
+                        </div>
+                        <div class="bar fade-in" data-percent="90">
+                            <div class="label"><span class="name">完美主義</span><span class="percent">90%</span></div>
+                            <div class="track"><div class="fill" style="width:0%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 style="font-size:1.05rem;margin-bottom:12px">技能</h3>
+                    <div class="bars stagger">
+                        <div class="bar fade-in" data-percent="85">
+                            <div class="label"><span class="name">簡報力</span><span class="percent">85%</span></div>
+                            <div class="track"><div class="fill" style="width:0%"></div></div>
+                        </div>
+                        <div class="bar fade-in" data-percent="90">
+                            <div class="label"><span class="name">Excel</span><span class="percent">90%</span></div>
+                            <div class="track"><div class="fill" style="width:0%"></div></div>
+                        </div>
+                        <div class="bar fade-in" data-percent="60">
+                            <div class="label"><span class="name">Python</span><span class="percent">60%</span></div>
+                            <div class="track"><div class="fill" style="width:0%"></div></div>
+                        </div>
+                        <div class="bar fade-in" data-percent="50">
+                            <div class="label"><span class="name">C++</span><span class="percent">50%</span></div>
+                            <div class="track"><div class="fill" style="width:0%"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Advantages -->
+    <div class="container" id="advantages">
+        <section>
+            <h2>個人優勢</h2>
+            <div class="cards stagger">
+                <div class="card-adv fade-in">
+                    <h3>時間管理</h3>
+                    <p>妥善分配讀書、活動與休閒時間，能在期限前完成任務。</p>
+                </div>
+                <div class="card-adv fade-in">
+                    <h3>團隊合作</h3>
+                    <p>擅長分工協調與傾聽，多次在表演與競賽中擔任溝通調停的角色。</p>
+                </div>
+                <div class="card-adv fade-in">
+                    <h3>勇於嘗試</h3>
+                    <p>遇到新機會會先嘗試看看，從實作中快速學習修正。</p>
+                </div>
+                <div class="card-adv fade-in">
+                    <h3>抱持好奇心</h3>
+                    <p>面對不懂的事喜歡追根究柢，主動查資料或請教他人。</p>
+                </div>
+                <div class="card-adv fade-in">
+                    <h3>熱心負責</h3>
+                    <p>時常幫助需要幫助的人，對交付的任務負責到底。</p>
+                </div>
+                <div class="card-adv fade-in">
+                    <h3>永不放棄</h3>
+                    <p>遇到困難時先拆解目標、逐步突破，直到達成為止。</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Experience Start -->
+    <div id="experience" class="container py-5">
+        <section>
+            <div class="text-center">
+                <h2 class="mb-4">經歷</h2>
+            </div>
+
+            <div class="row g-4 stagger">
+                <div class="col-md-4 fade-in">
+                    <div class="card h-100">
+                        <img src="img/S__64315399_0.jpg" class="card-img-top" alt="大一">
+                        <div class="card-body">
+                            <h5 class="card-title">大一</h5>
+                            <p class="card-text">科技營活動股</p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-md-4 fade-in">
+                    <div class="card h-100">
+                        <img src="img/S__64315401_0.jpg" class="card-img-top" alt="大一">
+                        <div class="card-body">
+                            <h5 class="card-title">大一</h5>
+                            <p class="card-text">科技之夜公關股</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 fade-in">
+                    <div class="card h-100">
+                        <img src="img/S__64315403.jpg" class="card-img-top" alt="宿營器設股">
+                        <div class="card-body">
+                            <h5 class="card-title">大二</h5>
+                            <p class="card-text">宿營器設股</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+    <!-- Experience End -->
+    <div id="react-root" style="margin-top:20px;"></div>
+
+    <!-- Contact -->
+    <div class="container" id="contact">
+        <section>
+            <h2>聯絡資訊</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>聯絡方式</h3>
+                    <p><strong>電話：</strong><a href="tel:0905493518">0905-493-518</a></p>
+                    <p><strong>Email：</strong><a href="mailto:41371204h@gapps.ntnu.edu.tw">41371204h@gapps.ntnu.edu.tw</a></p>
+                    <p><strong>LinkedIn：</strong><a href="https://www.linkedin.com/in/%E6%9D%8E%E9%9B%85%E9%83%81-%E5%8F%B0%E5%B8%AB%E5%A4%A7-41371204h/" target="_blank">李雅郁（台師大）</a></p>
+                </div>
+                <div class="contact-info">
+                    <h3>寄信給我</h3>
+                    <form onsubmit="alert('感謝你的訊息！(示範表單，不會送出)');return false;">
+                        <div style="display:flex;gap:8px;margin-bottom:8px">
+                            <input required placeholder="姓名" style="flex:1;padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.06)">
+                            <input required placeholder="Email" type="email" style="flex:1;padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.06)">
+                        </div>
+                        <textarea required placeholder="訊息..." rows="5" style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.06)"></textarea>
+                        <div style="text-align:right;margin-top:8px">
+                            <button style="background:var(--accent);border:none;padding:10px 18px;border-radius:10px;font-weight:700;color:#081018">送出</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+                <div style="font-weight:700">© 2025 李雅郁</div>
+                <div style="color:var(--muted)">想了解更多或合作，歡迎透過上方聯絡方式聯繫我。</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // animate bars on load (keeps previous behavior)
+        function animateBars(){
+            document.querySelectorAll('.bar').forEach((b,i)=>{
+                const p = b.getAttribute('data-percent') || '0';
+                const fill = b.querySelector('.fill');
+                // staggered by index
+                setTimeout(()=>{
+                    fill.style.transition = 'width 900ms cubic-bezier(.2,.9,.2,1)';
+                    fill.style.width = p + '%';
+                }, 100*i);
+            })
+        }
+
+        // reveal on scroll using IntersectionObserver
+        function setupScrollReveal(){
+            const io = new IntersectionObserver((entries)=>{
+                entries.forEach((ent)=>{
+                    if(ent.isIntersecting){
+                        ent.target.classList.add('show');
+                        // stagger children if container
+                        if(ent.target.classList.contains('stagger')){
+                            const children = Array.from(ent.target.children);
+                            children.forEach((c,idx)=>{
+                                setTimeout(()=>c.classList.add('show'), idx*100);
+                            });
+                        }
+                        io.unobserve(ent.target);
+                    }
+                });
+            },{threshold:0.12});
+
+            document.querySelectorAll('.fade-in, .stagger').forEach(el=>io.observe(el));
+        }
+
+        // Smooth scrolling for anchor links
+        document.addEventListener('click', function(e){
+            const a = e.target.closest('a[href^="#"]');
+            if(a){
+                const href = a.getAttribute('href');
+                if(href.length>1){
+                    const target = document.querySelector(href);
+                    if(target){
+                        e.preventDefault();
+                        target.scrollIntoView({behavior:'smooth',block:'start'});
+                        // update active link (simple)
+                        document.querySelectorAll('.nav-links a').forEach(x=>x.classList.remove('active'));
+                        const navA = document.querySelector('.nav-links a[href="'+href+'"]');
+                        if(navA) navA.classList.add('active');
+                    }
+                }
+            }
+        });
+
+        // Dark mode toggle saved (double-click brand)
+        (function(){
+            const key = 'site-dark-mode-v1';
+            const saved = localStorage.getItem(key);
+            if(saved === '1') document.body.classList.add('dark-mode');
+            document.querySelector('.brand').addEventListener('dblclick', ()=>{
+                document.body.classList.toggle('dark-mode');
+                localStorage.setItem(key, document.body.classList.contains('dark-mode')? '1':'0');
+            });
+        })();
+
+        window.addEventListener('load', ()=>{ animateBars(); setupScrollReveal(); });
+    </script>
+</body>
+
+</html>
