@@ -8,7 +8,7 @@
 
  ● 作業二：[解說影片](https://youtu.be/Z3GcsHOwKsI)
 
-GitHub專案網址：[專案內容]
+GitHub專案網址：[專案內容](https://github.com/41371204h/web/tree/main/my-app)
  
 AItest.tex：[排版、顏色更改並新增不同服務角色提供使用者選擇](https://github.com/41371204h/web/blob/main/my-app/app/(tabs)/AItest.tsx)
 
@@ -17,3 +17,7 @@ AItest.tex：[排版、顏色更改並新增不同服務角色提供使用者選
  ● 作業三：[解說影片](https://youtu.be/I2BTVdJ2sfM)
  
 GitHub專案網址：[專案內容](https://github.com/41371204h/web/tree/main/my-app2)
+
+-專案簡介與功能說明：我的個人網站包含個人介紹、特質、技能、優勢、經歷、連絡方式與AI互動
+
+-使用的 API：Gemini API
