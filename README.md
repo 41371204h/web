@@ -10,9 +10,17 @@
 
 GitHub專案網址：[專案內容](https://github.com/41371204h/web/tree/main/my-app)
  
-AItest.tex：[排版、顏色更改並新增不同服務角色提供使用者選擇](https://github.com/41371204h/web/blob/main/my-app/app/(tabs)/AItest.tsx)
+AItest.tex：[AItest修改檔案](https://github.com/41371204h/web/blob/main/my-app/app/(tabs)/AItest.tsx)
 
 使用AI協助流程：[Chat GPT](https://chatgpt.com/share/68edb059-3960-8013-94bf-40620d5ca1e0)
+
+修改之處：
+
+-更改排版、顏色
+
+-新增不同服務角色提供使用者選擇(對應自動發送訊息)
+
+-調整訊息輸入欄位
 
  ● 作業三：[解說影片](https://youtu.be/I2BTVdJ2sfM)
  
