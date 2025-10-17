@@ -23,8 +23,13 @@ GitHub專案網址：[專案內容](https://github.com/41371204h/web/tree/main/m
 -使用的 API：Gemini API
 
 -安裝與執行方式：
+
 1.從 cmd 安裝 npx create-react-app@latest my-app
+
 2.將靜態網站資料複製到 public 的資料夾中
+
 3.將 AItest.tsx 用 AI 工具轉成 js 檔並貼到 vscode
+
 4.修改 index.js 和 index.html
+
 5.在 vscode 終端機測時執行
