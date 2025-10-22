@@ -41,3 +41,9 @@ GitHub專案網址：[專案內容](https://github.com/41371204h/my-app2)
 4.修改 index.js 和 index.html
 
 5.在 vscode 終端機測時執行
+
+ ● 作業四：[render部屬](https://my-app2-jigq.onrender.com/)
+
+ -遇到的問題：照片有時候會讀取不到
+
+ -解決方法：發現是檔案名稱含有特殊符號或底線，像 S__64315399_0.jpg 這種連續底線、數字開頭的命名，在部分伺服器上可能被編碼不一致導致「偶爾抓不到」。因此我回到img和index_html更改我的圖片檔案名稱
