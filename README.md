@@ -24,7 +24,7 @@ AItest.tex：[AItest修改檔案](https://github.com/41371204h/web/blob/main/my-
 
  ● 作業三：[解說影片](https://youtu.be/I2BTVdJ2sfM)
  
-GitHub專案網址：[專案內容](https://github.com/41371204h/web/tree/main/my-app2)
+GitHub專案網址：[專案內容](https://github.com/41371204h/my-app2)
 
 -專案簡介與功能說明：藉由React專案與個人網頁的整合，使個人網頁更豐富，透過 Gemini API 提供聊天推薦的互動功能，可以選擇不同服務角色，包含天氣+穿搭助理、晚餐建議師、理財小助理、情緒小幫手，跟模型聊天互動。
 
