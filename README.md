@@ -79,6 +79,6 @@ GitHub專案網址：[專案內容](https://github.com/41371204h/my-app2)
 | :--- | :--- |
 | **線上網站網址 (Render)** | [https://socialpet-txxm.onrender.com](https://socialpet-txxm.onrender.com) |
 | **線上網站網址 (Vercel)** | [https://socialpet-psi.vercel.app/](https://socialpet-psi.vercel.app/) |
-| **程式碼 GitHub Repo** | [https://github.com/41371204h/project](https://github.com/41371204h/project) |
+| **程式碼 GitHub Repo** | [https://github.com/41371204h/1141-final-project](https://github.com/41371204h/1141-final-project) |
 | **專題展示影片** | [https://youtu.be/TOgQy5NhLto](https://youtu.be/TOgQy5NhLto)]|
 
